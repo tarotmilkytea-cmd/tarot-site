@@ -152,17 +152,16 @@ const allProducts = [
     badge: "exclusive",
   },
   {
-    id: "membership",
-    name: "Monthly Cosmic Membership",
-    price: 39,
-    priceLabel: "/month",
-    time: "Monthly",
-    pages: "5pg PDF/mo",
-    cards: "4 cards + transits",
-    desc: "Your personalized monthly roadmap. Week-by-week timing, action days, and one email Q&A included.",
-    tags: ["monthly"],
-    tier: "subscription",
-    badge: null,
+  id: "month-ahead",
+  name: "Month Ahead: Your Cosmic Weather",
+  price: 45,
+  time: "5 days",
+  pages: "5pg PDF",
+  cards: "4 cards + transits",
+  desc: "You got a deep reading — now navigate THIS month. Week-by-week timing, daily Go/Rest indicators, and a 4-card strategy spread for your current goal.",
+  tags: ["monthly"],
+  tier: "subscription",
+  badge: null,
   },
 ];
 
@@ -271,7 +270,7 @@ function ProductCard({ product }) {
           boxSizing: "border-box",
         }}
       >
-        {isSubscription ? "Join membership →" : "Book this reading →"}
+        {isSubscription ? "Book this reading →" : "Book this reading →"}
       </a>
     </div>
   );
