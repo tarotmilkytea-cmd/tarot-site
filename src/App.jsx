@@ -435,7 +435,7 @@ export default function TarotMilkyTeaShop() {
         {/* Subscription callout */}
         {!activeConcern && (
           <div style={{ marginTop: 20 }}>
-            <ProductCard product={allProducts.find((p) => p.id === "membership")} />
+            <ProductCard product={allProducts.find((p) => p.id === "month-ahead")} />
           </div>
         )}
       </section>
