@@ -79,15 +79,14 @@ const allProducts = [
     badge: "popular",
   },
   {
-    id: "second-half",
-    name: "The Second Half: Eclipse-to-Year-End Map",
-    price: 79,
-    launchPrice: 69,
+    id: "venus-rx-love-audit",
+    name: "Venus Rx Love Audit",
+    price: 69,
     time: "7 days",
-    pages: "16-18pg PDF",
-    cards: "19 cards + chart",
-    desc: "The Aug 12 eclipse resets one area of your life. This maps which one — and how the final 5 months of 2026 unfold for you, month by month.",
-    tags: ["love", "purpose", "career", "monthly"],
+    pages: "PDF",
+    cards: "Natal Venus + retrograde transit + tarot",
+    desc: "Explore your natal Venus, the October–November 2026 retrograde in your chart, and the relationship patterns worth revisiting through personalized tarot guidance.",
+    tags: ["love", "purpose"],
     tier: "deep",
     badge: "new",
   },
@@ -166,7 +165,6 @@ const allProducts = [
 ];
 
 const seasonalProducts = [
-  { name: "Venus Rx Love Audit", price: 69, window: "Oct-Nov 2026", event: "Venus retrograde through Scorpio → Libra", badge: null },
   { name: "2027 Year Ahead", price: 85, window: "December 2026", event: "Your complete 2027 cosmic roadmap", badge: null },
 ];
 
@@ -194,7 +192,7 @@ function Badge({ type }) {
 function ProductCard({ product }) {
   const [hovered, setHovered] = useState(false);
   const isSubscription = product.tier === "subscription";
-  const isFeatured = product.id === "second-half";
+  const isFeatured = product.id === "venus-rx-love-audit";
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -358,7 +356,7 @@ export default function TarotMilkyTeaShop() {
         </div>
       </section>
 
-      {/* ECLIPSE BANNER */}
+      {/* VENUS RETROGRADE BANNER */}
       <section style={{ padding: "0 32px", maxWidth: 720, margin: "0 auto 20px" }}>
         <a href={FORM_URL} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
           <div style={{
@@ -374,10 +372,10 @@ export default function TarotMilkyTeaShop() {
           }}>
             <div>
               <div style={{ fontSize: 15, fontWeight: 700, color: COLORS.text, marginBottom: 4 }}>
-                🌙 The August 12 eclipse is coming — where does it hit YOUR chart?
+                💗 Venus Retrograde Love Audit — what is changing in YOUR love life?
               </div>
               <div style={{ fontSize: 13, color: COLORS.textMuted, fontFamily: "system-ui, sans-serif" }}>
-                The Second Half Map · launch price $69 through August 1
+                Personalized Venus + retrograde transit + tarot reading · $69 · 7-day PDF
               </div>
             </div>
             <span style={{ fontSize: 13, fontWeight: 700, color: COLORS.gold, whiteSpace: "nowrap" }}>Book now →</span>
