@@ -3,6 +3,7 @@ import { allProducts, concerns, testimonials } from './data';
 
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSelJ-7i3LZ2wf1vKZ_6TmMQgqf8_xDccEDgW-a6mhQAo6Ukgw/viewform';
 const Arrow = () => <span aria-hidden="true">↗</span>;
+const Ribbon = () => <svg className="tea-ribbon" viewBox="0 0 130 76" aria-hidden="true"><path d="M62 29C44 7 12 2 17 25C20 42 48 38 62 29Z" fill="#b2cadd"/><path d="M68 29C86 7 118 2 113 25C110 42 82 38 68 29Z" fill="#c5d8e7"/><path d="M60 32C56 45 44 57 35 61L49 62L56 72C62 57 66 43 65 32" fill="#adc6da"/><path d="M69 31C74 44 81 53 97 60L84 63L78 71C69 56 65 44 65 32" fill="#bfd3e3"/><path d="M60 23Q65 20 70 24L69 35Q65 38 60 34Z" fill="#8eaec6"/><path d="M22 20Q38 20 58 29M109 20Q91 20 73 29M62 39L54 60M70 40L81 59" fill="none" stroke="#eff6fa" strokeWidth="1.5" opacity=".85"/></svg>;
 const faqs = [
   ['How does booking work?', 'Choose your service in the Google Form. Charlotte will email you within 12 hours with your PayPal link or invoice and any personal questions needed for your reading. Your delivery window begins after payment is confirmed. The form sends a request; payment follows by email.'],
   ["I don't know my birth time. Can I still book?", 'Yes. Tell me your birth time is unknown rather than guessing. We can explore the available chart information, but houses and some Moon interpretations may be limited. After Dark: Desire & Chemistry uses Symbolon only and does not need birth details for its analysis.'],
@@ -116,7 +117,7 @@ export default function TarotMilkyTeaShop() {
     <main>
       <section className="journey" id="home" ref={journeyRef} aria-labelledby="hero-title">
         <div className="hero-stage">
-          <picture><source media="(max-width: 760px)" srcSet="/images/tea-room-mobile.webp"/><img className="hero-art" src="/images/tea-room.webp" width="1586" height="992" fetchPriority="high" alt="A sunlit cup of milk tea, tarot cards and delicate powder-blue roses on an ivory linen table." /></picture>
+          <picture><source media="(max-width: 760px)" srcSet="/images/coquette-tea-mobile.webp"/><img className="hero-art" src="/images/coquette-tea.webp" width="1536" height="1024" fetchPriority="high" alt="Blue floral porcelain filled with milk tea, a satin bow, pearls and tarot cards beside blue roses in a sunlit tea room." /></picture>
           <div className="hero-wash" aria-hidden="true" />
           <div className="petals" aria-hidden="true"><i/><i/><i/><i/></div>
           <div className="hero-copy"><p className="eyebrow">TAROT, ASTROLOGY & A MOMENT FOR YOU</p><h1 id="hero-title">Your story,<br/><em>over tea.</em></h1><span className="handwritten">take your time</span><p className="hero-description">Personal readings with Charlotte.<br/>There is space for your story here.</p></div>
@@ -127,6 +128,7 @@ export default function TarotMilkyTeaShop() {
       </section>
 
       <section className="welcome section-pad" id="welcome" data-reveal>
+        <Ribbon/>
         <p className="eyebrow">01 — MAKE YOURSELF AT HOME</p>
         <h2>You don’t have to have<br/><em>it all figured out.</em></h2>
         <p>A question about love. A crossroads. A feeling you can’t quite name.<br className="desktop-break"/> Bring it here. Together, we’ll make a little room for perspective.</p>
@@ -134,7 +136,7 @@ export default function TarotMilkyTeaShop() {
       </section>
 
       <section className="readings-section section-pad" id="readings" aria-labelledby="readings-title">
-        <div className="section-intro" data-reveal><p className="eyebrow">02 — WHAT’S ON YOUR HEART?</p><h2 id="readings-title">A reading for<br/><em>your chapter.</em></h2><p>A first question, a deeper understanding, or a new chapter.<br/>Find the reading that meets you where you are.</p></div>
+        <div className="section-intro" data-reveal><Ribbon/><p className="eyebrow">02 — WHAT’S ON YOUR HEART?</p><h2 id="readings-title">A reading for<br/><em>your chapter.</em></h2><p>A first question, a deeper understanding, or a new chapter.<br/>Find the reading that meets you where you are.</p></div>
         <div className="audience-choices" id="returning" aria-label="Choose your reading journey">{[['first','Your first reading','Start with a question or explore your direction.'],['returning','Welcome back','A new month, a changed situation, a fresh question.']].map(([value,title,description]) => <button key={value} aria-pressed={audience === value} onClick={() => chooseAudience(value)}><span>{title}</span><small>{description}</small></button>)}</div>
         <div className="concern-grid" aria-label="Filter readings by topic">{concerns.map(c => <button key={c.id} aria-pressed={activeConcern === c.id} onClick={() => chooseConcern(c.id)}><Symbol kind={c.id}/><span>{c.label.replace('Life purpose & direction','Life & purpose')}</span><small>{c.sub}</small></button>)}</div>
         <div className="catalog-heading"><div className="catalog-links"><button className={`all-readings ${audience === 'all' && activeConcern === 'all' ? 'selected' : ''}`} aria-pressed={audience === 'all' && activeConcern === 'all'} onClick={() => chooseAudience('all')}>All readings <Arrow/></button>{showAdult && <a href="#after-dark-readings" className="after-dark-jump">After Dark · 18+ <span aria-hidden="true">↓</span></a>}</div><p role="status">{audience === 'first' ? 'Three ways to begin' : audience === 'returning' ? 'For your next chapter' : `${regular.length + (showAdult ? 2 : 0)} readings for you${showAdult ? ' · including After Dark below' : ''}`}</p></div>
@@ -146,8 +148,8 @@ export default function TarotMilkyTeaShop() {
         <aside className="restree-feature" id="restree" aria-labelledby="restree-heading">
           <div className="restree-collage">
             <p className="restree-small-note" aria-hidden="true">little moments,<br/><em>worth keeping.</em><span>♡</span></p>
-            <figure className="restree-tea-photo" aria-hidden="true"><img src="/images/tea-room-mobile.webp" alt="" width="1024" height="1536" loading="lazy"/><figcaption>a moment for yourself</figcaption></figure>
-            <figure className="restree-stree-photo"><div className="restree-photo-mat"><img src="/images/restree-stree.webp" alt="Stree, the little star who reads your journal and writes back" width="720" height="870" loading="lazy"/></div><figcaption>Meet Stree.<span>Your little letter-writing friend.</span></figcaption></figure>
+            <figure className="restree-tea-photo" aria-hidden="true"><img src="/images/coquette-tea-mobile.webp" alt="" width="1024" height="1536" loading="lazy"/><figcaption>a moment for yourself</figcaption></figure>
+            <figure className="restree-stree-photo"><div className="restree-photo-mat"><img src="/images/stree-tea-room.webp" alt="Stree imagined as a soft little star doll in a sunlit tea room" width="1122" height="1402" loading="lazy"/></div><figcaption>Meet Stree.<span>Your little letter-writing friend.</span></figcaption></figure>
             <p className="restree-blue-note" aria-hidden="true">your story<br/>belongs<br/><em>somewhere.</em><span>♡</span></p>
             <span className="restree-keepsake" aria-hidden="true">a letter, just for you</span>
           </div>
@@ -163,6 +165,7 @@ export default function TarotMilkyTeaShop() {
       </section>}
 
       <section className="booking-section section-pad" id="how-it-works" data-reveal>
+        <Ribbon/>
         <p className="eyebrow">03 — FROM YOUR QUESTION TO YOUR INBOX</p><h2>Simple, personal,<br/><em>at your pace.</em></h2>
         <div className="booking-steps"><div><span>01</span><h3>Choose your reading</h3><p>Find the reading that feels right and send your request through the Google Form.</p></div><div><span>02</span><h3>A note from Charlotte</h3><p>I’ll email your PayPal link and the personal questions or birth details needed for your reading.</p></div><div><span>03</span><h3>A little clarity, delivered</h3><p>After payment is confirmed, I prepare your reading and send it to your inbox within its listed delivery window.</p></div></div>
         <BookingLink className="button">Send a reading request <Arrow/></BookingLink><p className="small-note">No payment is taken in the booking form.</p>
@@ -170,12 +173,12 @@ export default function TarotMilkyTeaShop() {
 
       <section className="testimonials-section section-pad" aria-labelledby="testimonials-title" data-reveal><p className="eyebrow">WORDS FROM THE OTHER SIDE OF THE TABLE</p><h2 id="testimonials-title">A little more <em>clarity.</em></h2><div className="testimonials-grid">{testimonials.map(t => <figure key={t.name}><span className="quote-mark" aria-hidden="true">“</span><blockquote>{t.text}</blockquote><figcaption>{t.name}<span>{t.type}</span></figcaption></figure>)}</div></section>
 
-      <section className="about-section section-pad" id="about" data-reveal><div className="about-card" aria-hidden="true"><Symbol/><span>THE READER</span><em>Charlotte</em><div className="about-card-lines">THE STARS · THE CARDS<br/>YOUR STORY</div></div><div className="about-copy"><p className="eyebrow">04 — YOUR READER, CHARLOTTE</p><h2>A real person.<br/><em>Room for your story.</em></h2><p>I help people at life’s crossroads through astrology, tarot and Symbolon — bringing a little perspective to the questions that stay with you.</p><p>I personally pull your cards, explore your birth chart with professional software, and write your reading around your story. A thoughtful exchange, from one person to another.</p><a className="text-link" href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Read my stories on Medium <Arrow/></a></div></section>
+      <section className="about-section section-pad" id="about" data-reveal><div className="about-card" aria-hidden="true"><Ribbon/><Symbol/><span>THE READER</span><em>Charlotte</em><div className="about-card-lines">THE STARS · THE CARDS<br/>YOUR STORY</div></div><div className="about-copy"><p className="eyebrow">04 — YOUR READER, CHARLOTTE</p><h2>A real person.<br/><em>Room for your story.</em></h2><p>I help people at life’s crossroads through astrology, tarot and Symbolon — bringing a little perspective to the questions that stay with you.</p><p>I personally pull your cards, explore your birth chart with professional software, and write your reading around your story. A thoughtful exchange, from one person to another.</p><a className="text-link" href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Read my stories on Medium <Arrow/></a></div></section>
 
 
       <section className="faq-section section-pad" id="faq"><div><p className="eyebrow">BEFORE YOU SETTLE IN</p><h2>A few things<br/><em>you might wonder.</em></h2><p>Something else on your mind?<br/><a href="mailto:tarotmilkytea@gmail.com">Email Charlotte <Arrow/></a></p></div><div className="faq-list">{faqs.map(([q,a]) => <details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
 
-      <section className="closing section-pad" data-reveal><span aria-hidden="true">✧</span><p className="eyebrow">THERE’S A SEAT FOR YOU HERE</p><h2>Let’s begin<br/><em>with your story.</em></h2><BookingLink className="button">Book your reading <Arrow/></BookingLink><div className="closing-paths"><a href="#readings" onClick={() => chooseAudience('first')}>New here? Find your first reading.</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning? Find your next chapter.</a></div></section>
+      <section className="closing section-pad" data-reveal><Ribbon/><p className="eyebrow">THERE’S A SEAT FOR YOU HERE</p><h2>Let’s begin<br/><em>with your story.</em></h2><BookingLink className="button">Book your reading <Arrow/></BookingLink><div className="closing-paths"><a href="#readings" onClick={() => chooseAudience('first')}>New here? Find your first reading.</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning? Find your next chapter.</a></div></section>
     </main>
     <footer><a href="#home" className="wordmark">tarot milky tea</a><div><a href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Medium <Arrow/></a><a href="https://threads.net/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Threads <Arrow/></a><a href="mailto:tarotmilkytea@gmail.com">Email <Arrow/></a></div><p>© {new Date().getFullYear()} Tarot Milky Tea by Charlotte</p><small>Readings are for entertainment and spiritual guidance. Not a substitute for professional advice.</small></footer>
   </div>;
