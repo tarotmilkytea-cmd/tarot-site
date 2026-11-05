@@ -145,3 +145,6 @@ footer{background:#d7e5ef;border-top:1px solid #bda98766}
  .restree-keepsake{bottom:-10px;font-size:22px}
 }
 @media(max-width:380px){.restree-collage{height:395px}.restree-stree-photo{top:144px}.restree-keepsake{font-size:20px}.hero-copy h1{font-size:65px}.hero-copy{top:15%}}
+/* Leave breathing room between the photo caption and keepsake strip. */
+@media(max-width:760px){.restree-collage{height:460px}.restree-keepsake{bottom:0}}
+@media(max-width:380px){.restree-collage{height:425px}}
