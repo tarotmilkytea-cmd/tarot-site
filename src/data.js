@@ -8,6 +8,7 @@ export const concerns = [
 export const allProducts = [
   {
     id: "quick-check",
+    bestFor: "One focused question",
     name: "Quick-Check",
     price: 9,
     time: "24hr",
@@ -20,6 +21,7 @@ export const allProducts = [
   },
   {
     id: "quick-glimpse",
+    bestFor: "A brief chart introduction",
     name: "Quick Cosmic Glimpse",
     price: 25,
     time: "3 days",
@@ -32,6 +34,7 @@ export const allProducts = [
   },
   {
     id: "whats-on-their-mind",
+    bestFor: "Making sense of mixed signals",
     name: "What's On Their Mind",
     price: 35,
     time: "3 days",
@@ -74,6 +77,7 @@ export const allProducts = [
   },
   {
     id: "cosmic-clarity",
+    bestFor: "A crossroads or repeating pattern",
     name: "Cosmic Clarity",
     price: 49,
     time: "5 days",
@@ -86,6 +90,7 @@ export const allProducts = [
   },
   {
     id: "venus-rx-love-audit",
+    bestFor: "Revisit your relationship patterns",
     name: "Venus Rx Love Audit",
     price: 69,
     time: "7 days",
@@ -98,6 +103,7 @@ export const allProducts = [
   },
   {
     id: "toxic-pattern",
+    bestFor: "Understand a difficult cycle",
     name: "Toxic Pattern Breaker",
     price: 69,
     time: "5-7 days",
@@ -110,6 +116,7 @@ export const allProducts = [
   },
   {
     id: "deep-dive",
+    bestFor: "A major decision or transition",
     name: "Deep Dive: Stars + Cards",
     price: 85,
     time: "7 days",
@@ -122,6 +129,7 @@ export const allProducts = [
   },
   {
     id: "souls-blueprint",
+    bestFor: "Your purpose and direction",
     name: "Soul's Blueprint",
     price: 85,
     time: "7 days",
@@ -134,6 +142,7 @@ export const allProducts = [
   },
   {
     id: "compatibility",
+    bestFor: "Your relationship dynamics",
     name: "Ultimate Compatibility",
     price: 89,
     time: "7 days",
@@ -146,6 +155,7 @@ export const allProducts = [
   },
   {
     id: "symbolon-depth",
+    bestFor: "A deeper look at inner patterns",
     name: "Symbolon Depth Psychology",
     price: 119,
     time: "7-10 days",
@@ -158,6 +168,7 @@ export const allProducts = [
   },
   {
   id: "month-ahead",
+    bestFor: "Your next month, in focus",
   name: "Month Ahead: Your Cosmic Weather",
   price: 45,
   time: "5 days",

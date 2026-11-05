@@ -9,7 +9,9 @@ const faqs = [
   ['What do I receive?', 'Your reading is delivered by email. Quick-Check is a one-card email reading; the other readings are PDF reports. Each service lists its format and delivery window. All prices are in US dollars.'],
   ['What do I need for an After Dark reading?', 'These readings are for adults 18+ only, including anyone discussed in the reading. After booking, I confirm adulthood and ask your personal questions by email. Cosmic Chemistry also uses birth date, time and place; partner information is optional and should only be shared with permission. Synastry is included when sufficient birth information is available. Unknown times limit house and some Moon interpretations.'],
   ['Is the reading personal?', 'Yes. I personally pull your cards, analyze your chart with professional software (Astro.com and TimePassages), and write your report around your questions. AI is used only as a research assistant, never as the reader.'],
-  ['Can I ask follow-up questions?', 'Yes! Follow-ups are $11 per question via email. Monthly Membership members get one free Q&A per month.'],
+  ['I have had a reading before. What should I choose next?', 'Choose Month Ahead for a fresh look at the coming month, Deep Dive for a major decision, or a topic-specific reading for a new question. When Charlotte follows up by email, mention your earlier reading and what has changed. You do not need to buy a larger reading each time.'],
+  ['Is Month Ahead a subscription?', 'No. Month Ahead is a one-time $45 reading for returning clients. Book it when you want guidance for a new month; it does not renew automatically.'],
+  ['Can I ask follow-up questions?', 'Yes. If you want to clarify a reading you have already received, email Charlotte. Follow-up questions are $11 each. For a new situation or a fresh reading, choose the relevant service.'],
 ];
 
 function BookingLink({ children = <>Request this reading <Arrow /></>, className = 'button', product, ...props }) {
@@ -26,10 +28,12 @@ function Symbol({ kind = 'star' }) {
 function ProductCard({ product }) {
   const format = product.pages.replace(/(\d+)pg/, '$1-page');
   return <article className={`product-card ${product.adult ? 'adult-card' : ''}`} id={product.id}>
-    <div className="product-topline"><span>{product.adult ? 'PRIVATE · 18+' : product.cards}</span>{product.badge === 'popular' && <span className="badge">Most loved</span>}</div>
+    <div className="product-topline"><span>{product.adult ? 'PRIVATE · 18+' : product.bestFor || product.cards}</span>{product.id === 'souls-blueprint' && <span className="badge">Client favourite</span>}</div>
     <div className="product-heading"><h3>{product.name.replace('After Dark: ', '')}</h3><p className="price">${product.price}<span>USD</span></p></div>
     {product.subtitle && <p className="product-subtitle">{product.subtitle}</p>}
     <p className="product-description">{product.desc}</p>
+    <p className="product-method">{product.cards}</p>
+    {product.id === 'month-ahead' && <p className="returning-note">For returning clients · One-time purchase</p>}
     <div className="product-delivery"><span>{format}</span><span>{product.time === '24hr' ? 'Within 24 hours' : `Within ${product.time}`}</span></div>
     {product.details && <details className="product-details"><summary>What’s included <span aria-hidden="true">+</span></summary><ul>{product.details.map(d => <li key={d}>{d}</li>)}</ul></details>}
     <BookingLink product={product} className="reading-link" />
@@ -38,7 +42,7 @@ function ProductCard({ product }) {
 
 export default function TarotMilkyTeaShop() {
   const [activeConcern, setActiveConcern] = useState('all');
-  const [showAll, setShowAll] = useState(false);
+  const [audience, setAudience] = useState(() => window.location.hash === '#returning' ? 'returning' : 'first');
   const [menuOpen, setMenuOpen] = useState(false);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -46,6 +50,13 @@ export default function TarotMilkyTeaShop() {
   const journeyRef = useRef(null);
   const rootRef = useRef(null);
   const motionOff = paused || reduced;
+  useEffect(() => {
+    const syncJourney = () => {
+      if (window.location.hash === '#returning') { setAudience('returning'); setActiveConcern('all'); }
+    };
+    window.addEventListener('hashchange', syncJourney);
+    return () => window.removeEventListener('hashchange', syncJourney);
+  }, []);
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     const update = () => setReduced(mq.matches);
@@ -85,17 +96,19 @@ export default function TarotMilkyTeaShop() {
     return () => window.removeEventListener('keydown', close);
   }, [menuOpen]);
   const regular = allProducts.filter(p => !p.adult && (activeConcern === 'all' || p.tags.includes(activeConcern)));
-  const featured = ['quick-check', 'cosmic-clarity', 'deep-dive'];
-  const visible = activeConcern === 'all' && !showAll ? regular.filter(p => featured.includes(p.id)) : regular;
+  const featured = audience === 'returning' ? ['month-ahead', 'deep-dive', 'compatibility'] : ['quick-check', 'cosmic-clarity', 'souls-blueprint'];
+  const visible = activeConcern === 'all' && audience !== 'all' ? featured.map(id => regular.find(p => p.id === id)).filter(Boolean) : regular;
   const showAdult = activeConcern === 'all' || activeConcern === 'love';
-  function chooseConcern(id) { setActiveConcern(id); setShowAll(true); }
+  function chooseConcern(id) { setActiveConcern(id); setAudience('all'); }
+  function chooseAudience(value) { setAudience(value); setActiveConcern('all'); }
+
 
   return <div className={`site ${motionOff ? 'motion-off' : ''}`} ref={rootRef}>
     <a className="skip-link" href="#readings">Skip to readings</a>
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <a className="wordmark" href="#home" aria-label="Tarot Milky Tea home">tarot milky tea<span className="wordmark-star" aria-hidden="true">✧</span></a>
       <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`} id="main-navigation" aria-label="Main navigation" onClick={() => setMenuOpen(false)}>
-        <a href="#readings">Readings</a><a href="#about">Meet Charlotte</a><a href="#faq">FAQ</a>
+        <a href="#readings" onClick={() => chooseAudience('first')}>First reading</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning clients</a><a href="#about">Meet Charlotte</a><a href="#faq">FAQ</a>
       </nav>
       <div className="header-actions"><button className="motion-button" onClick={() => setPaused(!paused)} aria-label={motionOff ? 'Resume decorative motion' : 'Pause decorative motion'} aria-pressed={motionOff} disabled={reduced} title={reduced ? 'Reduced motion follows your device setting' : 'Toggle decorative motion'}>{motionOff ? '▷' : 'Ⅱ'}</button><BookingLink className="nav-book">Book a reading <Arrow /></BookingLink><button className="menu-button" aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'Close' : 'Menu'}</button></div>
     </header>
@@ -107,7 +120,7 @@ export default function TarotMilkyTeaShop() {
           <div className="hero-wash" aria-hidden="true" />
           <div className="petals" aria-hidden="true"><i/><i/><i/><i/></div>
           <div className="hero-copy"><p className="eyebrow">TAROT, ASTROLOGY & A MOMENT FOR YOU</p><h1 id="hero-title">Your story,<br/><em>over tea.</em></h1><span className="handwritten">take your time</span><p className="hero-description">Personal readings with Charlotte.<br/>There is space for your story here.</p></div>
-          <div className="hero-invitation"><a href="#readings" className="button">Find your reading <Arrow /></a><span>Settle in. Scroll a little.</span></div>
+          <div className="hero-invitation"><a href="#readings" className="button" onClick={() => chooseAudience('first')}>Find your first reading <Arrow /></a><a href="#returning" className="hero-return-link" onClick={() => chooseAudience('returning')}>Already had a reading? Welcome back.</a><span>Settle in. Scroll a little.</span></div>
           <p className="journey-whisper" aria-hidden="true">A quiet moment.<br/><em>A little clarity.</em></p>
           <div className="scene-caption" aria-hidden="true"><span>THE TEA ROOM</span><span>01 / 04</span></div>
         </div>
@@ -121,11 +134,14 @@ export default function TarotMilkyTeaShop() {
       </section>
 
       <section className="readings-section section-pad" id="readings" aria-labelledby="readings-title">
-        <div className="section-intro" data-reveal><p className="eyebrow">02 — WHAT’S ON YOUR HEART?</p><h2 id="readings-title">A reading for<br/><em>your chapter.</em></h2><p>Choose what’s bringing you here today.<br/>Every reading is personal. Every story is welcome.</p></div>
+        <div className="section-intro" data-reveal><p className="eyebrow">02 — WHAT’S ON YOUR HEART?</p><h2 id="readings-title">A reading for<br/><em>your chapter.</em></h2><p>A first question, a deeper understanding, or a new chapter.<br/>Find the reading that meets you where you are.</p></div>
+        <div className="audience-choices" id="returning" aria-label="Choose your reading journey">{[['first','Your first reading','Start with a question or explore your direction.'],['returning','Welcome back','A new month, a changed situation, a fresh question.']].map(([value,title,description]) => <button key={value} aria-pressed={audience === value} onClick={() => chooseAudience(value)}><span>{title}</span><small>{description}</small></button>)}</div>
         <div className="concern-grid" aria-label="Filter readings by topic">{concerns.map(c => <button key={c.id} aria-pressed={activeConcern === c.id} onClick={() => chooseConcern(c.id)}><Symbol kind={c.id}/><span>{c.label.replace('Life purpose & direction','Life & purpose')}</span><small>{c.sub}</small></button>)}</div>
-        <div className="catalog-heading"><div className="catalog-links"><button className={`all-readings ${activeConcern === 'all' ? 'selected' : ''}`} aria-pressed={activeConcern === 'all'} onClick={() => { setActiveConcern('all'); setShowAll(true); }}>All readings <Arrow/></button>{showAdult && <a href="#after-dark-readings" className="after-dark-jump">After Dark · 18+ <span aria-hidden="true">↓</span></a>}</div><p role="status">{activeConcern === 'all' && !showAll ? 'A few places to begin' : `${regular.length + (showAdult ? 2 : 0)} readings for you${showAdult ? ' · including After Dark below' : ''}`}</p></div>
+        <div className="catalog-heading"><div className="catalog-links"><button className={`all-readings ${audience === 'all' && activeConcern === 'all' ? 'selected' : ''}`} aria-pressed={audience === 'all' && activeConcern === 'all'} onClick={() => chooseAudience('all')}>All readings <Arrow/></button>{showAdult && <a href="#after-dark-readings" className="after-dark-jump">After Dark · 18+ <span aria-hidden="true">↓</span></a>}</div><p role="status">{audience === 'first' ? 'Three ways to begin' : audience === 'returning' ? 'For your next chapter' : `${regular.length + (showAdult ? 2 : 0)} readings for you${showAdult ? ' · including After Dark below' : ''}`}</p></div>
+        <div className="journey-guidance" aria-live="polite">{audience === 'returning' ? <><h3>You don’t have to start over.</h3><p>Choose Month Ahead for the coming month, Deep Dive for a major decision, or Compatibility for a relationship question. In your follow-up email with Charlotte, share your previous reading and what has changed.</p></> : audience === 'first' ? <><h3>Choose the depth your question needs.</h3><p>Try one focused question with Quick-Check, explore a crossroads with Cosmic Clarity, or look at your wider sense of purpose with Soul’s Blueprint.</p></> : <p>Choose by the question you want to explore. Each reading lists its format, price and delivery time.</p>}</div>
         <div className="product-grid">{visible.map(p => <ProductCard key={p.id} product={p}/>)}</div>
-        {activeConcern === 'all' && !showAll && <button className="view-all" onClick={() => setShowAll(true)}>Explore all {allProducts.length} readings <span aria-hidden="true">↓</span></button>}
+        {audience !== 'all' && <button className="view-all" onClick={() => chooseAudience('all')}>Explore all {allProducts.length} readings <span aria-hidden="true">↓</span></button>}
+        {audience === 'returning' && <div className="followup-guidance"><div><h3>A small follow-up?</h3><p>If you want to clarify your previous reading, follow-up questions are $11 each. A new reading is there when your question or situation has changed.</p></div><a href="mailto:tarotmilkytea@gmail.com" className="text-link">Email Charlotte <Arrow/></a></div>}
         <p className="delivery-note">All prices in USD. Delivery windows begin after confirmed payment. Your reading arrives by email.</p>
         <aside className="restree-feature" id="restree" aria-labelledby="restree-heading">
           <div className="restree-visual"><span className="restree-note">a letter, just for you</span><img src="/images/restree-stree.webp" alt="Stree, the little star who reads your journal and writes back" width="720" height="870" loading="lazy"/><p className="stree-caption">Meet <strong>Stree.</strong><span>Your little letter-writing friend.</span></p></div>
@@ -152,7 +168,7 @@ export default function TarotMilkyTeaShop() {
 
       <section className="faq-section section-pad" id="faq"><div><p className="eyebrow">BEFORE YOU SETTLE IN</p><h2>A few things<br/><em>you might wonder.</em></h2><p>Something else on your mind?<br/><a href="mailto:tarotmilkytea@gmail.com">Email Charlotte <Arrow/></a></p></div><div className="faq-list">{faqs.map(([q,a]) => <details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
 
-      <section className="closing section-pad" data-reveal><span aria-hidden="true">✧</span><p className="eyebrow">THERE’S A SEAT FOR YOU HERE</p><h2>Let’s begin<br/><em>with your story.</em></h2><BookingLink className="button">Book your reading <Arrow/></BookingLink><p>Not sure where to start? Try a one-card reading for $9.</p></section>
+      <section className="closing section-pad" data-reveal><span aria-hidden="true">✧</span><p className="eyebrow">THERE’S A SEAT FOR YOU HERE</p><h2>Let’s begin<br/><em>with your story.</em></h2><BookingLink className="button">Book your reading <Arrow/></BookingLink><div className="closing-paths"><a href="#readings" onClick={() => chooseAudience('first')}>New here? Find your first reading.</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning? Find your next chapter.</a></div></section>
     </main>
     <footer><a href="#home" className="wordmark">tarot milky tea</a><div><a href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Medium <Arrow/></a><a href="https://threads.net/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Threads <Arrow/></a><a href="mailto:tarotmilkytea@gmail.com">Email <Arrow/></a></div><p>© {new Date().getFullYear()} Tarot Milky Tea by Charlotte</p><small>Readings are for entertainment and spiritual guidance. Not a substitute for professional advice.</small></footer>
   </div>;
