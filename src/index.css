@@ -18,3 +18,5 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.journey{height:auto}.hero-stage{position:relative}.hero-copy{opacity:1!important;transform:none!important}.hero-art{transform:none!important}.journey-whisper{display:none}[data-reveal]{opacity:1;transform:none}}
 
 .catalog-links{display:flex;align-items:center;gap:26px}.after-dark-jump{font-size:11px;text-decoration:none;padding:12px 0;color:#76543e}.product-description,.booking-steps p,.faq-list details>p{font-size:14px}.product-delivery,.delivery-note{font-size:11px}.adult-notes p{font-size:11px}.product-details{font-size:12px}@media(max-width:760px){.catalog-links{gap:17px;flex-wrap:wrap}.after-dark-jump{font-size:10px;padding:0}.catalog-heading>p{max-width:140px}.product-description,.booking-steps p,.faq-list details>p{font-size:13px}}
+
+@media(max-width:760px){.hero-art{height:100%;top:0;bottom:0;object-position:50% 85%}.hero-wash{background:linear-gradient(180deg,#fbf7ef14,transparent 60%)}.handwritten{top:auto;bottom:-36px;left:48%;font-size:27px}.hero-invitation{bottom:5%}.hero-copy{top:16%}}

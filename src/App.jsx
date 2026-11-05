@@ -103,7 +103,7 @@ export default function TarotMilkyTeaShop() {
     <main>
       <section className="journey" id="home" ref={journeyRef} aria-labelledby="hero-title">
         <div className="hero-stage">
-          <img className="hero-art" src="/images/tea-room.webp" width="1586" height="992" fetchPriority="high" alt="A sunlit cup of milk tea, tarot cards and delicate powder-blue roses on an ivory linen table." />
+          <picture><source media="(max-width: 760px)" srcSet="/images/tea-room-mobile.webp"/><img className="hero-art" src="/images/tea-room.webp" width="1586" height="992" fetchPriority="high" alt="A sunlit cup of milk tea, tarot cards and delicate powder-blue roses on an ivory linen table." /></picture>
           <div className="hero-wash" aria-hidden="true" />
           <div className="petals" aria-hidden="true"><i/><i/><i/><i/></div>
           <div className="hero-copy"><p className="eyebrow">TAROT, ASTROLOGY & A MOMENT FOR YOU</p><h1 id="hero-title">Your story,<br/><em>over tea.</em></h1><span className="handwritten">take your time</span><p className="hero-description">Personal readings with Charlotte.<br/>There is space for your story here.</p></div>
