@@ -1,2 +1,62 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+body { margin: 0; background: #0b0b1a; }
+button, a, summary { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid #e8c872; outline-offset: 5px; }
+.shop { overflow: clip; }
+.hero { background: radial-gradient(ellipse at 50% 30%, #2a1b3e66, transparent 65%); }
+.hero h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400 !important; font-size: clamp(46px, 6vw, 82px) !important; line-height: 1.08 !important; }
+.hero h1 em { font-weight: 400; }
+.site-nav { max-width: 1440px; margin: auto; gap: 20px; }
+.site-nav a { display: inline-flex; align-items: center; min-height: 36px; }
+.after-dark-intro { max-width: 1016px; margin: 0 auto 36px; padding: 48px; border: 1px solid #73516780; border-radius: 24px; background: radial-gradient(ellipse at 85% 20%, #66365255, transparent 55%), linear-gradient(125deg, #241a30, #171425); display: grid; grid-template-columns: 1.5fr 1fr; gap: 36px; align-items: center; }
+.eyebrow, .product-eyebrow { color: #e9b1c1; font: 600 11px/1.7 system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+.after-dark-heading h2 { font: 400 clamp(30px, 3.6vw, 44px)/1.15 Georgia, serif; color: #f6e8ed; margin: 14px 0 20px; }
+.after-dark-heading h2 em { color: #e3bedc; }
+.after-dark-heading > p:not(.eyebrow) { color: #c0b7cf; font: 16px/1.7 system-ui, sans-serif; max-width: 500px; }
+.collection-link { color: #efd69a; font: 600 14px/1.6 system-ui, sans-serif; display: inline-flex; gap: 18px; margin-top: 22px; padding: 10px 0; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.celestial-mark { width: 250px; height: 290px; justify-self: center; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border: 1px solid #dab4ce55; border-radius: 125px 125px 16px 16px; color: #e9c7d7; background: linear-gradient(160deg, #d0aac111, transparent); }
+.celestial-mark > span:first-child { font-size: 27px; color: #e8c872; }
+.celestial-mark > span:nth-of-type(2) { font: 400 33px/1.08 Georgia, serif; text-align: center; letter-spacing: .12em; margin: 15px 0; }
+.celestial-mark small { font: 9px/1.5 system-ui, sans-serif; letter-spacing: .2em; }
+.moon-orbit { width: 58px; height: 58px; margin-top: 18px; border-radius: 50%; box-shadow: inset 14px -4px 0 #e8c5ab; transform: rotate(-20deg); }
+.product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.product-card { min-width: 0; }
+.product-card h3 { font-family: Georgia, serif; font-size: 24px !important; }
+.product-card > a { display: block; }
+.after-dark-card { background: linear-gradient(145deg, #2b1c32, #181627) !important; border-color: #96627c88 !important; }
+.after-dark-card:hover { border-color: #e9b1c1 !important; }
+.reading-details { margin: 2px 0 14px; padding-left: 18px; color: #d5c9de; font: 14px/1.7 system-ui, sans-serif; }
+.reading-details li + li { margin-top: 6px; }
+.reading-note { font: 13px/1.75 system-ui, sans-serif; color: #bcb1c9; margin-top: 16px; max-width: 940px; }
+.after-dark-readings { margin-bottom: 44px; scroll-margin-top: 28px; }
+.collection-title { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.collection-title h2 { font: 400 34px/1.2 Georgia, serif; }
+.collection-title span { font: 11px/1.6 system-ui, sans-serif; letter-spacing: .12em; color: #e9b1c1; }
+.how-it-works { max-width: 1016px; padding: 40px 0; margin: 0 auto; border-top: 1px solid #c4a7e733; border-bottom: 1px solid #c4a7e733; }
+.how-it-works h2 { font: 400 32px/1.25 Georgia, serif; margin: 12px 0 30px; }
+.booking-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; font-family: system-ui, sans-serif; }
+.booking-steps span { color: #e8c872; font: italic 26px Georgia, serif; }
+.booking-steps h3 { font-size: 17px; margin: 14px 0 8px; }
+.booking-steps p { color: #c0b7cf; font-size: 14px; line-height: 1.7; }
+@media (max-width: 1100px) { .after-dark-intro, .how-it-works { margin-left: 32px; margin-right: 32px; } }
+@media (max-width: 700px) {
+  .site-nav { padding: 16px 20px !important; flex-wrap: wrap; justify-content: center !important; gap: 8px; }
+  .site-nav > span { width: 100%; text-align: center; }
+  .site-nav > div { gap: 24px !important; font-size: 12px !important; }
+  .hero { padding: 48px 20px 38px !important; }
+  .hero > p { font-size: 15px !important; }
+  .hero > p:first-of-type { font-size: 10px !important; line-height: 1.8; }
+  .after-dark-intro { margin: 0 20px 28px; padding: 28px 24px; grid-template-columns: 1fr; gap: 0; }
+  .celestial-mark { display: none; }
+  .shop > section:not(.hero):not(.after-dark-intro):not(.how-it-works) { padding-left: 20px !important; padding-right: 20px !important; }
+  .product-grid { grid-template-columns: 1fr; gap: 16px; }
+  .product-card { padding: 22px 20px !important; }
+  .product-card h3 { font-size: 23px !important; }
+  .how-it-works { margin: 0 20px; padding: 32px 0; }
+  .booking-steps { grid-template-columns: 1fr; gap: 26px; }
+  .booking-steps h3 { margin-top: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+
