@@ -16,14 +16,14 @@ const COLORS = {
   teal: "#7EC8B8",
   tealSoft: "rgba(126,200,184,0.12)",
   text: "#E8E4F0",
-  textMuted: "#9B94A7",
-  textDim: "#6B6580",
+  textMuted: "#C0B7CF",
+  textDim: "#ABA0BD",
   border: "rgba(196,167,231,0.12)",
   borderHover: "rgba(196,167,231,0.25)",
 };
 
 const concerns = [
-  { id: "love", emoji: "💕", label: "Love & relationships", sub: "Their feelings, staying or leaving, compatibility" },
+  { id: "love", emoji: "💕", label: "Love & relationships", sub: "Attraction, emotional patterns, compatibility" },
   { id: "purpose", emoji: "🔮", label: "Life purpose & direction", sub: "Why am I here? Breaking patterns, spiritual growth" },
   { id: "career", emoji: "💼", label: "Career & decisions", sub: "Next move, crossroads, timing" },
   { id: "monthly", emoji: "🌙", label: "Monthly guidance", sub: "Ongoing cosmic weather for your chart" },
@@ -61,10 +61,40 @@ const allProducts = [
     time: "3 days",
     pages: "4pg PDF",
     cards: "Symbolon 3+1",
-    desc: "What are they really feeling? A Symbolon deep-read into someone's true thoughts about you.",
+    desc: "A reflective Symbolon reading exploring relationship dynamics, mixed signals, and your perspective on the connection.",
     tags: ["love"],
     tier: "quick",
     badge: "new",
+  },
+  {
+    id: "after-dark-desire",
+    name: "After Dark: Desire & Chemistry",
+    price: 49,
+    time: "5 days",
+    pages: "5pg PDF",
+    cards: "5 Symbolon cards",
+    subtitle: "18+ Private Symbolon Reading",
+    desc: "Explore sexual attraction, desire, emotional attachment, and what you hope for from intimacy through a private, reflective Symbolon reading.",
+    details: ["5 Symbolon cards, focused on your personal question", "A 5-page PDF delivered by email within 5 days of confirmed payment", "No birth chart required for this Symbolon reading"],
+    tags: ["love"],
+    tier: "core",
+    badge: "new",
+    adult: true,
+  },
+  {
+    id: "after-dark-cosmic",
+    name: "After Dark: Cosmic Chemistry",
+    price: 99,
+    time: "10 days",
+    pages: "10pg PDF",
+    cards: "9 Symbolon cards + astrology",
+    subtitle: "18+ Premium Symbolon & Astrology Reading",
+    desc: "A deeper exploration of sexual attraction, emotional intimacy, compatibility, and psychological patterns through Symbolon and astrology.",
+    details: ["9 Symbolon cards + Venus, Mars, Moon and Pluto", "5th, 7th and 8th houses when accurate birth time is available", "Optional synastry using the birth information available for both people", "A 10-page PDF delivered by email within 10 days of confirmed payment"],
+    tags: ["love"],
+    tier: "deep",
+    badge: "exclusive",
+    adult: true,
   },
   {
     id: "cosmic-clarity",
@@ -194,7 +224,9 @@ function ProductCard({ product }) {
   const isSubscription = product.tier === "subscription";
   const isFeatured = product.id === "venus-rx-love-audit";
   return (
-    <div
+    <article
+      className={`product-card ${product.adult ? "after-dark-card" : ""}`}
+      id={product.id}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -203,7 +235,6 @@ function ProductCard({ product }) {
         borderRadius: 16,
         padding: "24px 26px",
         transition: "all 0.2s",
-        cursor: "pointer",
         display: "flex",
         flexDirection: "column",
         gap: 10,
@@ -211,10 +242,11 @@ function ProductCard({ product }) {
         ...(isFeatured ? { borderColor: COLORS.pink, borderWidth: 2 } : {}),
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+      {product.subtitle && <p className="product-eyebrow">{product.subtitle}</p>}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16 }}> 
         <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 17, fontWeight: 600, color: COLORS.text }}>{product.name}</span>
+            <h3 style={{ fontSize: 19, lineHeight: 1.4, fontWeight: 600, color: COLORS.text }}>{product.name}</h3>
             {product.badge && <Badge type={product.badge} />}
           </div>
         </div>
@@ -245,13 +277,15 @@ function ProductCard({ product }) {
         <span>🃏 {product.cards}</span>
       </div>
 
+      {product.details && <ul className="reading-details">{product.details.map(detail => <li key={detail}>{detail}</li>)}</ul>}
       <a
+        aria-label={`Book ${product.name} for $${product.price}`}
         href={FORM_URL}
         target="_blank"
         rel="noopener noreferrer"
         style={{
-          marginTop: 4,
-          padding: "10px 0",
+          marginTop: "auto",
+          padding: "13px 12px",
           textAlign: "center",
           textDecoration: "none",
           background: hovered
@@ -270,7 +304,7 @@ function ProductCard({ product }) {
       >
         {isSubscription ? "Book this reading →" : "Book this reading →"}
       </a>
-    </div>
+    </article>
   );
 }
 
@@ -282,10 +316,10 @@ export default function TarotMilkyTeaShop() {
     : allProducts.filter((p) => p.tier !== "subscription");
 
   return (
-    <div style={{ background: COLORS.bg, minHeight: "100vh", color: COLORS.text, fontFamily: "'Comfortaa', 'Nunito', system-ui, sans-serif" }}>
+    <div className="shop" style={{ background: COLORS.bg, minHeight: "100vh", color: COLORS.text, fontFamily: "'Comfortaa', 'Nunito', system-ui, sans-serif" }}>
 
       {/* NAV */}
-      <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 32px", borderBottom: `1px solid ${COLORS.border}` }}>
+      <nav className="site-nav" aria-label="Main navigation" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 32px", borderBottom: `1px solid ${COLORS.border}` }}>
         <span style={{ fontSize: 15, fontWeight: 700, letterSpacing: "0.03em", color: COLORS.accent }}>tarot milky tea</span>
         <div style={{ display: "flex", gap: 24, fontSize: 13, color: COLORS.textMuted }}>
           <a href="#readings" style={{ color: "inherit", textDecoration: "none" }}>Readings</a>
@@ -296,7 +330,7 @@ export default function TarotMilkyTeaShop() {
       </nav>
 
       {/* HERO */}
-      <section style={{ textAlign: "center", padding: "80px 32px 60px", position: "relative", overflow: "hidden" }}>
+      <section className="hero" style={{ textAlign: "center", padding: "80px 32px 60px", position: "relative", overflow: "hidden" }}>
         <div style={{
           position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
           width: 400, height: 400, borderRadius: "50%",
@@ -305,7 +339,7 @@ export default function TarotMilkyTeaShop() {
         }} />
 
         <p style={{ fontSize: 13, letterSpacing: "0.2em", color: COLORS.textMuted, textTransform: "uppercase", marginBottom: 16, position: "relative" }}>
-          Astrology + Tarot for absolute clarity
+          Personal readings. A little cosmic perspective.
         </p>
 
         <h1 style={{
@@ -319,12 +353,12 @@ export default function TarotMilkyTeaShop() {
           WebkitTextFillColor: "transparent",
           letterSpacing: "-0.01em",
         }}>
-          tarot<br/>milky tea
+          Your story,<br/><em>written in the stars.</em>
         </h1>
 
         <p style={{ fontSize: 17, color: COLORS.textMuted, maxWidth: 480, margin: "0 auto 32px", lineHeight: 1.6, position: "relative", fontFamily: "system-ui, sans-serif" }}>
           Your birth chart is the map. Tarot is the path.<br/>
-          Personalized readings by Charlotte — not algorithms, not AI-generated fluff.
+          Thoughtful astrology, tarot and Symbolon readings by Charlotte, made around your questions.
         </p>
 
         <div style={{ display: "flex", gap: 12, justifyContent: "center", position: "relative", flexWrap: "wrap" }}>
@@ -356,8 +390,18 @@ export default function TarotMilkyTeaShop() {
         </div>
       </section>
 
+      <section className="after-dark-intro" aria-labelledby="after-dark-heading">
+        <div className="after-dark-heading">
+          <p className="eyebrow">THE AFTER DARK COLLECTION · 18+</p>
+          <h2 id="after-dark-heading">Chemistry is a feeling.<br/><em>Give it a little perspective.</em></h2>
+          <p>Two private readings for the questions you keep to yourself. Explore desire, attachment and intimacy through symbols and self-reflection.</p>
+          <a href="#after-dark-readings" className="collection-link" onClick={() => setActiveConcern("love")}>Explore the two readings · $49 / $99 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div className="celestial-mark" aria-hidden="true"><span>✦</span><div className="moon-orbit"/><span>AFTER<br/>DARK</span><small>SYMBOLON · ASTROLOGY</small></div>
+      </section>
+
       {/* VENUS RETROGRADE BANNER */}
-      <section style={{ padding: "0 32px", maxWidth: 720, margin: "0 auto 20px" }}>
+      <section style={{ padding: "0 32px", maxWidth: 1080, margin: "0 auto 20px" }}>
         <a href={FORM_URL} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
           <div style={{
             padding: "18px 24px",
@@ -384,7 +428,7 @@ export default function TarotMilkyTeaShop() {
       </section>
 
       {/* WHAT BRINGS YOU HERE */}
-      <section id="readings" style={{ padding: "40px 32px 20px", maxWidth: 720, margin: "0 auto" }}>
+      <section id="readings" style={{ padding: "40px 32px 20px", maxWidth: 1080, margin: "0 auto" }}>
         <h2 style={{ fontSize: 24, fontWeight: 700, textAlign: "center", marginBottom: 8 }}>What brings you here?</h2>
         <p style={{ textAlign: "center", fontSize: 14, color: COLORS.textMuted, marginBottom: 28, fontFamily: "system-ui, sans-serif" }}>
           Choose what you need clarity on — I'll show you the right reading.
@@ -394,6 +438,7 @@ export default function TarotMilkyTeaShop() {
           {concerns.map((c) => (
             <button
               key={c.id}
+              aria-pressed={activeConcern === c.id}
               onClick={() => setActiveConcern(activeConcern === c.id ? null : c.id)}
               style={{
                 padding: "16px 14px",
@@ -423,9 +468,17 @@ export default function TarotMilkyTeaShop() {
       </section>
 
       {/* PRODUCT GRID */}
-      <section style={{ padding: "20px 32px 60px", maxWidth: 720, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 12 }}>
-          {filtered.map((p) => (
+      <section style={{ padding: "20px 32px 60px", maxWidth: 1080, margin: "0 auto" }}>
+        {(!activeConcern || activeConcern === "love") && (
+          <div id="after-dark-readings" className="after-dark-readings">
+            <div className="collection-title"><h2>After Dark</h2><span>PRIVATE READINGS · ADULTS 18+</span></div>
+            <div className="product-grid">{filtered.filter(p => p.adult).map(p => <ProductCard key={p.id} product={p} />)}</div>
+            <p className="reading-note">For adults 18+ only, including anyone discussed in the reading. These symbolic readings cannot verify another person's private thoughts, sexual preferences, consent or future actions.</p>
+            <p className="reading-note">Choose your service in the existing booking form. Charlotte will follow up by email with your PayPal link, age confirmation and personal questions. For Cosmic Chemistry, she will also request birth date, birth time (or “unknown”) and birthplace. The other person's details are optional; only share what you have permission to provide. Unknown times limit house and some Moon interpretations.</p>
+          </div>
+        )}
+        <div className="product-grid">
+          {filtered.filter(p => !p.adult).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>
@@ -438,8 +491,18 @@ export default function TarotMilkyTeaShop() {
         )}
       </section>
 
+      <section className="how-it-works" aria-labelledby="booking-heading">
+        <p className="eyebrow">FROM YOUR QUESTION TO YOUR READING</p>
+        <h2 id="booking-heading">A personal process, from start to finish.</h2>
+        <div className="booking-steps">
+          <div><span>01</span><h3>Choose your reading</h3><p>Select your service and send your request through the booking form.</p></div>
+          <div><span>02</span><h3>Look out for my email</h3><p>I'll send your PayPal link and follow up with the questions and details needed for your reading.</p></div>
+          <div><span>03</span><h3>Receive your reading</h3><p>Your delivery window begins after payment is confirmed. Your personal reading arrives by email.</p></div>
+        </div>
+      </section>
+
       {/* SEASONAL */}
-      <section style={{ padding: "40px 32px", maxWidth: 720, margin: "0 auto" }}>
+      <section style={{ padding: "40px 32px", maxWidth: 1080, margin: "0 auto" }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>✦ Seasonal specials</h2>
         <p style={{ fontSize: 13, color: COLORS.textMuted, marginBottom: 20, fontFamily: "system-ui, sans-serif" }}>Limited readings aligned with 2026's most powerful celestial events.</p>
         <div style={{ display: "grid", gap: 10 }}>
@@ -465,7 +528,7 @@ export default function TarotMilkyTeaShop() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section style={{ padding: "50px 32px", maxWidth: 720, margin: "0 auto" }}>
+      <section style={{ padding: "50px 32px", maxWidth: 1080, margin: "0 auto" }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, textAlign: "center", marginBottom: 24 }}>What people are saying</h2>
         <div style={{ display: "grid", gap: 14 }}>
           {testimonials.map((t, i) => (
@@ -484,7 +547,7 @@ export default function TarotMilkyTeaShop() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" style={{ padding: "50px 32px", maxWidth: 720, margin: "0 auto" }}>
+      <section id="about" style={{ padding: "50px 32px", maxWidth: 1080, margin: "0 auto" }}>
         <div style={{ background: COLORS.bgCard, border: `1px solid ${COLORS.border}`, borderRadius: 20, padding: "32px 30px" }}>
           <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 12 }}>Hi, I'm Charlotte 🌙</h2>
           <div style={{ fontSize: 14, color: COLORS.textMuted, lineHeight: 1.8, fontFamily: "system-ui, sans-serif" }}>
@@ -496,12 +559,13 @@ export default function TarotMilkyTeaShop() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" style={{ padding: "50px 32px 40px", maxWidth: 720, margin: "0 auto" }}>
+      <section id="faq" style={{ padding: "50px 32px 40px", maxWidth: 1080, margin: "0 auto" }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20 }}>Frequently asked</h2>
         {[
-          ["I don't know my exact birth time — can I still get a reading?", "Yes! For $9-$49 readings, we use 12:00 PM as default and you still get 90% of the insight. For $85+ readings, exact time is ideal but we can work without it. Check your birth certificate or call the hospital where you were born."],
-          ["How do I pay?", "PayPal only. After you fill out the intake form, I'll send a secure PayPal invoice within 12 hours. Pay the invoice, and your reading begins immediately."],
+          ["I don't know my exact birth time — can I still get a reading?", "Yes. Tell me your birth time is unknown rather than guessing. We can explore the available chart information, but houses and some Moon interpretations may be limited. After Dark: Desire & Chemistry uses Symbolon only and does not need birth details for its analysis."],
+          ["How do I pay?", "Choose your service in the existing booking form. I'll follow up by email with a PayPal link or invoice within 12 hours and any additional questions needed for your reading. The stated delivery window starts after payment is confirmed."],
           ["Is this real astrology or AI-generated?", "This is REAL, personalized astrology + tarot. I use professional software (Astro.com, TimePassages), personally pull cards for you, and use AI only as a research assistant — never as the reader."],
+          ["What do I need for an After Dark reading?", "These readings are for adults 18+ only. After booking, I confirm adulthood and ask your personal questions by email. Cosmic Chemistry also uses birth date, time and place; any partner information is optional. Synastry is included when sufficient birth information is available, and unknown times limit what can be interpreted. Readings explore symbolism; they cannot establish another person’s private thoughts or sexual preferences."],
           ["Can I ask follow-up questions?", "Yes! Follow-ups are $11 per question via email. Monthly Membership members get 1 free Q&A per month."],
         ].map(([q, a], i) => (
           <details key={i} style={{
@@ -532,7 +596,7 @@ export default function TarotMilkyTeaShop() {
           display: "inline-block",
           padding: "16px 40px",
           background: `linear-gradient(135deg, ${COLORS.accent}, ${COLORS.pink})`,
-          color: "#fff",
+          color: COLORS.bg,
           border: "none",
           borderRadius: 14,
           fontSize: 16,
@@ -558,3 +622,4 @@ export default function TarotMilkyTeaShop() {
     </div>
   );
 }
+
