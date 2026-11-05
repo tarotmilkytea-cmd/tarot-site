@@ -151,7 +151,7 @@ footer{background:#d7e5ef;border-top:1px solid #bda98766}
 
 
 /* Reading selectors: paired foreground/background states and persistent labels. */
-.audience-choices button,.concern-grid button{position:relative;border:2px solid #9aafbf;border-radius:12px;background:#fffdf8;color:#2d4b60;box-shadow:0 4px 0 #aec2d04d;transition:background .18s,border-color .18s,box-shadow .18s;cursor:pointer}
+.audience-choices button,.concern-grid button{position:relative;border:2px solid #9aafbf;border-radius:12px;background:#fffdf8;color:#2d4b60;box-shadow:0 4px 0 #aec2d04d;transition:border-color .18s,box-shadow .18s;cursor:pointer}
 .audience-choices button{padding:49px 26px 24px;min-height:155px}
 .concern-grid{gap:16px;margin-top:36px}
 .concern-grid button,.concern-grid button:last-child,.concern-grid button:nth-child(2),.concern-grid button:nth-child(n+3){border:2px solid #9aafbf;padding:49px 16px 24px}
