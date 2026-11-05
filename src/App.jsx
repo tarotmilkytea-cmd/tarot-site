@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { allProducts, concerns, seasonalProducts, testimonials } from './data';
+import { allProducts, concerns, testimonials } from './data';
 
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSelJ-7i3LZ2wf1vKZ_6TmMQgqf8_xDccEDgW-a6mhQAo6Ukgw/viewform';
 const Arrow = () => <span aria-hidden="true">↗</span>;
@@ -145,7 +145,6 @@ export default function TarotMilkyTeaShop() {
 
       <section className="about-section section-pad" id="about" data-reveal><div className="about-card" aria-hidden="true"><Symbol/><span>THE READER</span><em>Charlotte</em><div className="about-card-lines">THE STARS · THE CARDS<br/>YOUR STORY</div></div><div className="about-copy"><p className="eyebrow">04 — YOUR READER, CHARLOTTE</p><h2>A real person.<br/><em>Room for your story.</em></h2><p>I help people at life’s crossroads through astrology, tarot and Symbolon — bringing a little perspective to the questions that stay with you.</p><p>I personally pull your cards, explore your birth chart with professional software, and write your reading around your story. A thoughtful exchange, from one person to another.</p><a className="text-link" href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Read my stories on Medium <Arrow/></a></div></section>
 
-      <section className="seasonal-section section-pad"><p className="eyebrow">A NOTE FROM THE COSMOS</p>{seasonalProducts.map(p => <div className="seasonal-row" key={p.name}><div><h3>{p.name}</h3><p>{p.window} · {p.event}</p></div><span>${p.price} USD</span><BookingLink className="text-link">Ask about this reading <Arrow/></BookingLink></div>)}</section>
 
       <section className="faq-section section-pad" id="faq"><div><p className="eyebrow">BEFORE YOU SETTLE IN</p><h2>A few things<br/><em>you might wonder.</em></h2><p>Something else on your mind?<br/><a href="mailto:tarotmilkytea@gmail.com">Email Charlotte <Arrow/></a></p></div><div className="faq-list">{faqs.map(([q,a]) => <details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
 
