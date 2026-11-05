@@ -20,3 +20,16 @@
 .catalog-links{display:flex;align-items:center;gap:26px}.after-dark-jump{font-size:11px;text-decoration:none;padding:12px 0;color:#76543e}.product-description,.booking-steps p,.faq-list details>p{font-size:14px}.product-delivery,.delivery-note{font-size:11px}.adult-notes p{font-size:11px}.product-details{font-size:12px}@media(max-width:760px){.catalog-links{gap:17px;flex-wrap:wrap}.after-dark-jump{font-size:10px;padding:0}.catalog-heading>p{max-width:140px}.product-description,.booking-steps p,.faq-list details>p{font-size:13px}}
 
 @media(max-width:760px){.hero-art{height:100%;top:0;bottom:0;object-position:50% 85%}.hero-wash{background:linear-gradient(180deg,#fbf7ef14,transparent 60%)}.handwritten{top:auto;bottom:-36px;left:48%;font-size:27px}.hero-invitation{bottom:5%}.hero-copy{top:16%}}
+
+/* ReStree is an app discovery path; personal readings keep their existing booking flow. */
+.restree-feature{max-width:1280px;margin:65px auto 0;padding:42px 50px 42px 30px;display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:center;background:#f9f5ec;border:1px solid #cabcd34d;border-radius:5px 5px 38px 5px;overflow:hidden}
+.restree-visual{min-height:310px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(ellipse,#e0d9ed9c,transparent 68%)}
+.restree-visual img{width:min(100%,270px);height:auto;object-fit:contain;filter:drop-shadow(0 12px 15px #81709318)}
+.restree-note{position:absolute;left:0;top:12px;font:italic 21px/1.1 var(--serif);color:#76688c;transform:rotate(-9deg)}
+.restree-wordmark{font:500 38px/1 var(--serif);letter-spacing:-1px;color:#6d5c83;margin-top:10px}
+.restree-copy .eyebrow{font-size:9px;letter-spacing:.12em;color:#73647d;margin-bottom:20px}
+.restree-copy h3{font-size:clamp(38px,3.6vw,55px);line-height:1.07;letter-spacing:-.03em}
+.restree-copy>p:not(.eyebrow):not(.restree-availability){font-size:13px;line-height:1.9;color:var(--muted);margin-top:18px;max-width:530px}
+.restree-copy .button{background:#756285;border-color:#756285;font-size:21px;margin-top:26px;padding:12px 27px;min-height:48px}
+.restree-copy .button:hover{background:#5e4c70}.restree-availability{font-size:10px;color:#62596d;margin-top:16px;line-height:1.7}
+@media(max-width:760px){.restree-feature{grid-template-columns:1fr;padding:25px 25px 32px;gap:28px;margin-top:45px}.restree-visual{min-height:240px}.restree-visual img{width:200px}.restree-note{font-size:20px;left:0;top:8px}.restree-wordmark{font-size:32px}.restree-copy h3{font-size:40px}.restree-copy .eyebrow{font-size:8px}.restree-copy>p:not(.eyebrow):not(.restree-availability){font-size:12px}.restree-availability{font-size:9px}}

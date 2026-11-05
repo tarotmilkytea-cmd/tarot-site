@@ -127,6 +127,10 @@ export default function TarotMilkyTeaShop() {
         <div className="product-grid">{visible.map(p => <ProductCard key={p.id} product={p}/>)}</div>
         {activeConcern === 'all' && !showAll && <button className="view-all" onClick={() => setShowAll(true)}>Explore all {allProducts.length} readings <span aria-hidden="true">↓</span></button>}
         <p className="delivery-note">All prices in USD. Delivery windows begin after confirmed payment. Your reading arrives by email.</p>
+        <aside className="restree-feature" id="restree" aria-labelledby="restree-heading">
+          <div className="restree-visual"><span className="restree-note">a little friend<br/>for your everyday</span><img src="/images/restree-stree.webp" alt="STREE, ReStree’s smiling star journaling companion" width="720" height="870" loading="lazy"/><span className="restree-wordmark">ReStree</span></div>
+          <div className="restree-copy"><p className="eyebrow">ALSO FROM THE CREATOR OF TAROT MILKY TEA · JOURNALING APP</p><h3 id="restree-heading">Your everyday story,<br/><em>with a little guidance.</em></h3><p>A journal that remembers your story and writes back. Meet STREE, your little journaling companion.</p><p>Put your day into words, connect the dots between your feelings and recurring patterns, and explore a little cosmic perspective — with a thoughtful reply to help you reflect.</p><a className="button" href="https://restree-website.vercel.app/?utm_source=tarotmilkytea&utm_medium=referral&utm_campaign=product_catalog" target="_blank" rel="noopener noreferrer">Explore ReStree <Arrow/></a><p className="restree-availability">Available on Android · iPhone waitlist on the ReStree website</p></div>
+        </aside>
       </section>
 
       {showAdult && <section id="after-dark-readings" className="after-dark-section section-pad" aria-labelledby="after-dark-title">
