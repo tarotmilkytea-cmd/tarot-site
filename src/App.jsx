@@ -67,6 +67,32 @@ const allProducts = [
     badge: "new",
   },
   {
+    id: "after-dark-desire",
+    name: "After Dark: Desire & Chemistry",
+    price: 49,
+    time: "5 days",
+    pages: "5pg PDF",
+    cards: "5 Symbolon cards",
+    desc: "18+ private Symbolon reading exploring attraction, intimate chemistry, emotional attachment, boundaries, and the difference between desire and commitment.",
+    tags: ["love"],
+    tier: "core",
+    badge: "new",
+    bookingComingSoon: true,
+  },
+  {
+    id: "after-dark-cosmic",
+    name: "After Dark: Cosmic Chemistry",
+    price: 99,
+    time: "10 days",
+    pages: "10pg PDF",
+    cards: "9 Symbolon cards + astrology",
+    desc: "18+ premium intimacy reading combining in-depth Symbolon psychology with Venus, Mars, Moon, and relationship-house astrology. Includes synastry when both birth datasets are supplied.",
+    tags: ["love"],
+    tier: "deep",
+    badge: "exclusive",
+    bookingComingSoon: true,
+  },
+  {
     id: "cosmic-clarity",
     name: "Cosmic Clarity",
     price: 49,
@@ -245,7 +271,9 @@ function ProductCard({ product }) {
         <span>🃏 {product.cards}</span>
       </div>
 
-      <a
+      {product.bookingComingSoon ? (
+        <div role="status" style={{ marginTop: 4, padding: "10px 0", textAlign: "center", border: `1px solid ${COLORS.borderHover}`, borderRadius: 10, fontSize: 13, color: COLORS.textMuted }}>Coming soon · 18+ · Booking opens after form update</div>
+      ) : <a
         href={FORM_URL}
         target="_blank"
         rel="noopener noreferrer"
@@ -269,7 +297,7 @@ function ProductCard({ product }) {
         }}
       >
         {isSubscription ? "Book this reading →" : "Book this reading →"}
-      </a>
+      </a}
     </div>
   );
 }
