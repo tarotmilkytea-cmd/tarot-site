@@ -297,7 +297,7 @@ function ProductCard({ product }) {
         }}
       >
         {isSubscription ? "Book this reading →" : "Book this reading →"}
-      </a}
+      </a>}
     </div>
   );
 }
