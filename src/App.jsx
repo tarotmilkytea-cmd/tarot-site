@@ -123,7 +123,7 @@ export default function TarotMilkyTeaShop() {
           <div className="hero-copy"><p className="eyebrow">TAROT, ASTROLOGY & A MOMENT FOR YOU</p><h1 id="hero-title">Your story,<br/><em>over tea.</em></h1><span className="handwritten">take your time</span><p className="hero-description">Personal readings with Charlotte.<br/>There is space for your story here.</p></div>
           <div className="hero-invitation"><a href="#readings" className="button" onClick={() => chooseAudience('first')}>Find your first reading <Arrow /></a><a href="#returning" className="hero-return-link" onClick={() => chooseAudience('returning')}>Already had a reading? Welcome back.</a><span>Settle in. Scroll a little.</span></div>
           <p className="journey-whisper" aria-hidden="true">A quiet moment.<br/><em>A little clarity.</em></p>
-          <div className="scene-caption" aria-hidden="true"><span>THE TEA ROOM</span><span>01 / 04</span></div>
+          <div className="scene-caption" aria-hidden="true"><span>THE TEA ROOM</span></div>
         </div>
       </section>
 
