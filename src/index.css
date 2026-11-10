@@ -187,3 +187,94 @@ footer{background:#d7e5ef;border-top:1px solid #bda98766}
 .year-ahead-compare{border-top:1px solid #dce4e8;padding-top:18px;margin-top:22px;font-size:13px;color:#526875}
 @media(max-width:850px){.year-ahead-section{grid-template-columns:1fr;gap:28px}.year-ahead-copy h2{font-size:54px}.year-ahead-offer{padding:26px}.year-ahead-copy>p:not(.eyebrow){max-width:none}}
 @media(max-width:420px){.year-ahead-copy h2{font-size:46px}.year-ahead-offer .product-heading h3{font-size:27px}.year-ahead-offer{padding:22px 18px}.year-ahead-offer .price{font-size:34px}}
+
+/* Unslop polish pass (method: unslop by @heydamir, CC BY 4.0).
+   Quiet the chrome so the tea-room photo and the 2027 offer carry the richness. */
+
+/* 1. Spacing: section rhythm on the 4px grid */
+.section-pad{padding:112px max(6vw,24px)}
+.welcome{padding-block:128px}
+.about-section{padding-block:144px}
+.concern-grid{margin:36px auto 56px}
+.product-grid{gap:24px}
+.product-card{padding:36px 32px 32px}
+.testimonials-grid{gap:24px}
+.testimonials-grid figure{padding:32px}
+.booking-steps{gap:24px}
+.booking-steps>div{padding:32px 28px 28px}
+@media(max-width:1050px){.section-pad{padding:88px 5vw}}
+@media(max-width:760px){.section-pad{padding:76px 24px}.welcome{padding-block:88px}.product-card{padding:36px 28px 28px}.booking-steps>div{padding:24px 20px}.testimonials-grid figure,.testimonials-grid figure:last-child{padding:28px}}
+@media(max-width:380px){.section-pad{padding-inline:20px}}
+
+/* 2. Color: flat surfaces from the existing cream and blue, no washes or stripes */
+.welcome,.booking-section,.closing{background:#fcf9f2}
+.readings-section{background:#e9f0f4}
+.testimonials-section{background:#e2ecf2}
+.after-dark-section{background:#e8eaef}
+.about-section{background:none}
+.year-ahead-section{background:#f3f6fa}
+.booking-steps>div{background:#eef4f8;box-shadow:none}
+.testimonials-grid figure{box-shadow:none}
+.testimonials-grid figure:nth-child(2){transform:none}
+.about-card{background:#d9e7f1}
+.restree-feature{background:#d3e0e7;box-shadow:none}
+.restree-feature:before,.restree-feature:after{display:none}
+.restree-copy{background:#fffdf8}
+.button{box-shadow:none}
+.site-header.is-scrolled{box-shadow:none}
+
+/* 3. Icons and ornaments: the pearl pin is the one signature, so the scattered hearts go */
+.booking-steps>div:after{content:none}
+
+/* 5. Type: sentence-case labels, nothing under 11px */
+.eyebrow{font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:none}
+.hero-copy .eyebrow{font-size:12px}
+.restree-copy .eyebrow{font-size:11px;letter-spacing:.02em}
+.product-topline{font-size:11px;letter-spacing:0;text-transform:none}
+.price span{font-size:10px;letter-spacing:.04em}
+.scene-caption{font-size:11px;letter-spacing:.04em}
+.about-card>span,.after-dark-photo>span{font-size:11px;letter-spacing:.04em}
+.about-card-lines{font-size:11px;letter-spacing:.02em}
+.restree-app-name span{font-size:11px;letter-spacing:.02em}
+.restree-stree-photo figcaption span{font-size:11px}
+.concern-grid small,.audience-choices small{font-size:12px}
+.product-delivery,.delivery-note,.adult-notes p,.small-note{font-size:12px}
+.catalog-heading>p{font-size:12px}
+footer>p,footer>small{font-size:11px}
+footer>div a{font-size:12px}
+.price,.year-ahead-year{font-variant-numeric:tabular-nums}
+@media(max-width:760px){
+ .eyebrow,.hero-copy .eyebrow{font-size:11px;letter-spacing:.03em}
+ .restree-copy .eyebrow{font-size:11px}
+ .hero-description{font-size:13px}
+ .hero-invitation .hero-return-link{font-size:12px}
+ .scene-caption{font-size:10px}
+ .concern-grid small,.audience-choices small{font-size:11px}
+ .catalog-heading>p,.delivery-note,.adult-notes p{font-size:11px}
+ .after-dark-jump{font-size:12px}
+ .restree-stree-photo figcaption span{font-size:11px}
+ footer>small{font-size:11px}
+ .selection-state{font-size:11px}
+}
+
+/* 7. Details: one radius family and quiet selectors */
+.product-card,.adult-card{border-radius:12px}
+.testimonials-grid figure,.booking-steps>div{border-radius:12px}
+.year-ahead-offer{border-radius:16px;box-shadow:0 12px 32px #47677b0f}
+.audience-choices button,.concern-grid button,
+.concern-grid button:last-child,.concern-grid button:nth-child(2),.concern-grid button:nth-child(n+3){border:1px solid #a9bccb;box-shadow:none}
+.audience-choices button:hover,.concern-grid button:hover{box-shadow:none}
+.audience-choices button[aria-pressed=true],.concern-grid button[aria-pressed=true]{box-shadow:none;border-color:#284b64}
+.audience-choices button:active,.concern-grid button:active{box-shadow:none;transform:scale(.99)}
+.all-readings,.view-all{border:1px solid #a9bccb;border-radius:999px;box-shadow:none}
+.all-readings[aria-pressed=true],.view-all[aria-pressed=true]{box-shadow:none}
+.selection-state{font-weight:500;letter-spacing:0}
+.badge{background:none;border:0;padding:0;font-size:11px;letter-spacing:0;color:#46667c}
+
+/* 9. Motion: no floating, no lift on hover; colour changes only */
+.petals{display:none}
+.button,.button:hover{transform:none}
+.button{transition:background-color .2s var(--ease)}
+.product-card{transition:box-shadow .2s var(--ease)}
+.product-card:hover{transform:none;box-shadow:0 8px 20px #415e700d}
+.button:hover span,.text-link:hover span,.reading-link:hover span{transform:none}
