@@ -168,3 +168,22 @@ footer{background:#d7e5ef;border-top:1px solid #bda98766}
 .all-readings[aria-pressed=true],.view-all[aria-pressed=true]{background:#355e7a;border-color:#284b64;color:#fffdf8;box-shadow:0 3px 0 #284b64}
 @media(max-width:760px){.audience-choices{gap:12px}.audience-choices button{padding:44px 15px 20px;min-height:175px}.audience-choices button>span{font-size:25px}.concern-grid{gap:12px;margin-top:28px}.concern-grid button,.concern-grid button:last-child,.concern-grid button:nth-child(2),.concern-grid button:nth-child(n+3){padding:44px 12px 22px}.concern-grid button>span{font-size:23px}.concern-grid small{font-size:10px}.selection-state{top:13px;right:12px;font-size:9px}.all-readings{font-size:11px;padding:12px 14px}}
 @media(prefers-reduced-motion:reduce){.audience-choices button,.concern-grid button{transition:none}}
+
+/* A seasonal offer within the existing blue-rose tea room. */
+.year-ahead-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,90px);align-items:center;background:linear-gradient(130deg,#f5f8fc,#edf3f9 55%,#fcf9f2);scroll-margin-top:100px}
+.year-ahead-copy h2{font-size:clamp(46px,5.6vw,78px);line-height:1.04;margin:22px 0 26px}
+.year-ahead-copy>p:not(.eyebrow){max-width:530px;line-height:1.8}
+.year-ahead-focus{margin-top:25px}
+.year-ahead-offer{border:1px solid #a8bdcc;border-radius:14px;padding:clamp(24px,3.8vw,48px);background:#fffdf8;box-shadow:0 16px 46px #47677b10;min-width:0}
+.year-ahead-year{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(54px,6vw,86px);line-height:1;color:#557b99;margin:0 0 24px;display:flex;justify-content:space-between;align-items:center}
+.year-ahead-year span{font-size:35px;color:#b69a67}
+.year-ahead-offer .product-heading{gap:14px;align-items:start}
+.year-ahead-offer .product-heading h3{font-size:32px;line-height:1.2}
+.year-ahead-offer ul{padding-left:20px;line-height:1.9;margin:24px 0}
+.year-ahead-offer>p{line-height:1.75}
+.year-ahead-bonus{padding:18px 20px;background:#edf3f8;border-radius:8px;border-left:3px solid #8faec3;margin:24px 0}
+.year-ahead-offer .button{width:100%;display:flex;justify-content:space-between;gap:12px;margin-top:24px;white-space:normal;text-align:left}
+.year-ahead-offer .small-note{margin-top:16px}
+.year-ahead-compare{border-top:1px solid #dce4e8;padding-top:18px;margin-top:22px;font-size:13px;color:#526875}
+@media(max-width:850px){.year-ahead-section{grid-template-columns:1fr;gap:28px}.year-ahead-copy h2{font-size:54px}.year-ahead-offer{padding:26px}.year-ahead-copy>p:not(.eyebrow){max-width:none}}
+@media(max-width:420px){.year-ahead-copy h2{font-size:46px}.year-ahead-offer .product-heading h3{font-size:27px}.year-ahead-offer{padding:22px 18px}.year-ahead-offer .price{font-size:34px}}

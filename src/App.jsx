@@ -16,7 +16,8 @@ const faqs = [
 ];
 
 function BookingLink({ children = <>Request this reading <Arrow /></>, className = 'button', product, ...props }) {
-  return <a className={className} href={FORM_URL} target="_blank" rel="noopener noreferrer"
+  const href = product?.formChoice ? `${FORM_URL}?usp=pp_url&entry.930116636=${encodeURIComponent(product.formChoice)}` : FORM_URL;
+  return <a className={className} href={href} target="_blank" rel="noopener noreferrer"
     aria-label={product ? `Request ${product.name} for $${product.price} — opens Google Form` : undefined} {...props}>{children}</a>;
 }
 
@@ -100,6 +101,8 @@ export default function TarotMilkyTeaShop() {
   const featured = audience === 'returning' ? ['month-ahead', 'deep-dive', 'compatibility'] : ['quick-check', 'cosmic-clarity', 'souls-blueprint'];
   const visible = activeConcern === 'all' && audience !== 'all' ? featured.map(id => regular.find(p => p.id === id)).filter(Boolean) : regular;
   const showAdult = activeConcern === 'all' || activeConcern === 'love';
+  const yearAhead = allProducts.find(p => p.id === 'year-ahead-2027');
+  const yearAheadBonusActive = Date.now() <= Date.parse('2026-12-16T04:59:59.999Z');
   function chooseConcern(id) { setActiveConcern(id); setAudience('all'); }
   function chooseAudience(value) { setAudience(value); setActiveConcern('all'); }
 
@@ -109,7 +112,7 @@ export default function TarotMilkyTeaShop() {
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <a className="wordmark" href="#home" aria-label="Tarot Milky Tea home">tarot milky tea<span className="wordmark-star" aria-hidden="true">✧</span></a>
       <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`} id="main-navigation" aria-label="Main navigation" onClick={() => setMenuOpen(false)}>
-        <a href="#readings" onClick={() => chooseAudience('first')}>First reading</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning clients</a><a href="#about">Meet Charlotte</a><a href="#faq">FAQ</a>
+        <a href="#year-ahead">2027 Year Ahead</a><a href="#readings" onClick={() => chooseAudience('first')}>First reading</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning clients</a><a href="#about">Meet Charlotte</a><a href="#faq">FAQ</a>
       </nav>
       <div className="header-actions"><button className="motion-button" onClick={() => setPaused(!paused)} aria-label={motionOff ? 'Resume decorative motion' : 'Pause decorative motion'} aria-pressed={motionOff} disabled={reduced} title={reduced ? 'Reduced motion follows your device setting' : 'Toggle decorative motion'}>{motionOff ? '▷' : 'Ⅱ'}</button><BookingLink className="nav-book">Book a reading <Arrow /></BookingLink><button className="menu-button" aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'Close' : 'Menu'}</button></div>
     </header>
@@ -133,6 +136,11 @@ export default function TarotMilkyTeaShop() {
         <h2>You don’t have to have<br/><em>it all figured out.</em></h2>
         <p>A question about love. A crossroads. A feeling you can’t quite name.<br className="desktop-break"/> Bring it here. Together, we’ll make a little room for perspective.</p>
         <div className="welcome-signature">a cup of comfort, a little cosmic perspective <span aria-hidden="true">✧</span></div>
+      </section>
+
+      <section className="year-ahead-section section-pad" id="year-ahead" aria-labelledby="year-ahead-title">
+        <div className="year-ahead-copy"><p className="eyebrow">A NEW YEAR, ROOM FOR YOUR STORY</p><h2 id="year-ahead-title">Your 2027,<br/><em>one month at a time.</em></h2><p>You may not need another resolution.<br/>You may need a little room to see what comes next.</p><p><strong>2027 Year Ahead: Your Cosmic Map</strong> brings together twelve months of personal transit timing, monthly key dates, and a twelve-card monthly spread.</p><p className="year-ahead-focus">Choose your focus: <strong>Love · Career · Overall</strong></p><p className="small-note">Tell me your focus in the form’s question field, or when I email to confirm your details.</p></div>
+        <div className="year-ahead-offer"><p className="year-ahead-year" aria-hidden="true">2027 <span>✧</span></p><div className="product-heading"><h3>Your Cosmic Map</h3><p className="price">$99<span>USD</span></p></div><ul><li>12 months of personal transits</li><li>Month-by-month key dates</li><li>12 tarot cards, one for each month</li></ul><p>Delivered as a PDF within <strong>10 days</strong> after payment is confirmed.</p>{yearAheadBonusActive && <p className="year-ahead-bonus"><strong>A little something to keep.</strong><br/>Submit your request form by <strong>December 15, 2026 at 11:59 p.m. ET</strong> to receive a feelings-journal PDF and a one-page 2027 Key Dates calendar with your reading.</p>}<BookingLink product={yearAhead}>Request my 2027 Cosmic Map <Arrow/></BookingLink><p className="small-note">15 Year Ahead bookings per month.<br/>Booking closes January 31, 2027.</p><p className="year-ahead-compare">Deep Dive ($85) explores three months in depth.<br/>Year Ahead ($99) maps the full twelve months.</p></div>
       </section>
 
       <section className="readings-section section-pad" id="readings" aria-labelledby="readings-title">

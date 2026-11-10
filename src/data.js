@@ -7,6 +7,21 @@ export const concerns = [
 
 export const allProducts = [
   {
+    id: "year-ahead-2027",
+    bestFor: "Your next twelve months",
+    name: "2027 Year Ahead: Your Cosmic Map",
+    price: 99,
+    time: "10 days",
+    pages: "PDF",
+    cards: "12 monthly cards + personal transits",
+    desc: "A twelve-month map of your personal transits, monthly key dates, and one tarot card for each month. Choose Love, Career, or Overall.",
+    details: ["12 months of personal transit timing", "Month-by-month key dates and a 12-card monthly spread", "Choose your focus: Love, Career, or Overall", "PDF delivered by email within 10 days after payment is confirmed", "15 Year Ahead bookings per month; booking closes January 31, 2027"],
+    formChoice: "$99 2027 Year Ahead - 12-Month Transits + Month-by-Month Spread (10-Day PDF)",
+    tags: ["love", "career", "purpose", "monthly"],
+    tier: "deep",
+    badge: null,
+  },
+  {
     id: "quick-check",
     bestFor: "One focused question",
     name: "Quick-Check",
@@ -182,7 +197,7 @@ export const allProducts = [
 ];
 
 export const seasonalProducts = [
-  { name: "2027 Year Ahead", price: 85, window: "December 2026", event: "Your complete 2027 cosmic roadmap", badge: null },
+  { name: "2027 Year Ahead", price: 99, window: "Booking closes January 31, 2027", event: "12-month transits + month-by-month spread · 10-day PDF", badge: null },
 ];
 
 export const testimonials = [
