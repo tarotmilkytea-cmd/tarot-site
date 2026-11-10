@@ -181,7 +181,7 @@ footer{background:#d7e5ef;border-top:1px solid #bda98766}
 .year-ahead-offer .product-heading h3{font-size:32px;line-height:1.2}
 .year-ahead-offer ul{padding-left:20px;line-height:1.9;margin:24px 0}
 .year-ahead-offer>p{line-height:1.75}
-.year-ahead-bonus{padding:18px 20px;background:#edf3f8;border-radius:8px;border-left:3px solid #8faec3;margin:24px 0}
+.year-ahead-bonus{padding:16px 0 0;border-top:1px solid #dce4e8;margin:24px 0;font-size:14px;color:#526875}
 .year-ahead-offer .button{width:100%;display:flex;justify-content:space-between;gap:12px;margin-top:24px;white-space:normal;text-align:left}
 .year-ahead-offer .small-note{margin-top:16px}
 .year-ahead-compare{border-top:1px solid #dce4e8;padding-top:18px;margin-top:22px;font-size:13px;color:#526875}
