@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { allProducts, concerns, testimonials } from './data';
 
+import JournalsSection from './JournalsSection';
+
+const INSTAGRAM_URL = 'https://www.instagram.com/tarot.milkytea/';
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSelJ-7i3LZ2wf1vKZ_6TmMQgqf8_xDccEDgW-a6mhQAo6Ukgw/viewform';
 const Arrow = () => <span aria-hidden="true">↗</span>;
 const Ribbon = () => <svg className="tea-ribbon" viewBox="0 0 130 76" aria-hidden="true"><path d="M62 29C44 7 12 2 17 25C20 42 48 38 62 29Z" fill="#b2cadd"/><path d="M68 29C86 7 118 2 113 25C110 42 82 38 68 29Z" fill="#c5d8e7"/><path d="M60 32C56 45 44 57 35 61L49 62L56 72C62 57 66 43 65 32" fill="#adc6da"/><path d="M69 31C74 44 81 53 97 60L84 63L78 71C69 56 65 44 65 32" fill="#bfd3e3"/><path d="M60 23Q65 20 70 24L69 35Q65 38 60 34Z" fill="#8eaec6"/><path d="M22 20Q38 20 58 29M109 20Q91 20 73 29M62 39L54 60M70 40L81 59" fill="none" stroke="#eff6fa" strokeWidth="1.5" opacity=".85"/></svg>;
@@ -112,7 +115,7 @@ export default function TarotMilkyTeaShop() {
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <a className="wordmark" href="#home" aria-label="Tarot Milky Tea home">tarot milky tea<span className="wordmark-star" aria-hidden="true">✧</span></a>
       <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`} id="main-navigation" aria-label="Main navigation" onClick={() => setMenuOpen(false)}>
-        <a href="#year-ahead">2027 Year Ahead</a><a href="#readings" onClick={() => chooseAudience('first')}>First reading</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning clients</a><a href="#about">Meet Charlotte</a><a href="#faq">FAQ</a>
+        <a href="#year-ahead">2027 Year Ahead</a><a href="#readings" onClick={() => chooseAudience('first')}>First reading</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning clients</a><a href="#about">Meet Charlotte</a><a href="#journals">Journals</a><a href="#faq">FAQ</a><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">Instagram</a>
       </nav>
       <div className="header-actions"><button className="motion-button" onClick={() => setPaused(!paused)} aria-label={motionOff ? 'Resume decorative motion' : 'Pause decorative motion'} aria-pressed={motionOff} disabled={reduced} title={reduced ? 'Reduced motion follows your device setting' : 'Toggle decorative motion'}>{motionOff ? '▷' : 'Ⅱ'}</button><BookingLink className="nav-book">Book a reading <Arrow /></BookingLink><button className="menu-button" aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'Close' : 'Menu'}</button></div>
     </header>
@@ -182,10 +185,12 @@ export default function TarotMilkyTeaShop() {
       <section className="about-section section-pad" id="about" data-reveal><div className="about-card" aria-hidden="true"><Ribbon/><Symbol/><span>The reader</span><em>Charlotte</em><div className="about-card-lines">The stars · the cards<br/>your story</div></div><div className="about-copy"><p className="eyebrow">04 — Your reader, Charlotte</p><h2>A real person.<br/><em>Room for your story.</em></h2><p>I help people at life’s crossroads through astrology, tarot and Symbolon — bringing a little perspective to the questions that stay with you.</p><p>I personally pull your cards, explore your birth chart with professional software, and write your reading around your story. A thoughtful exchange, from one person to another.</p><a className="text-link" href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Read my stories on Medium <Arrow/></a></div></section>
 
 
+      <JournalsSection />
+
       <section className="faq-section section-pad" id="faq"><div><p className="eyebrow">Before you settle in</p><h2>A few things<br/><em>you might wonder.</em></h2><p>Something else on your mind?<br/><a href="mailto:tarotmilkytea@gmail.com">Email Charlotte <Arrow/></a></p></div><div className="faq-list">{faqs.map(([q,a]) => <details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
 
       <section className="closing section-pad" data-reveal><Ribbon/><p className="eyebrow">There’s a seat for you here</p><h2>Let’s begin<br/><em>with your story.</em></h2><BookingLink className="button">Book your reading <Arrow/></BookingLink><div className="closing-paths"><a href="#readings" onClick={() => chooseAudience('first')}>New here? Find your first reading.</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning? Find your next chapter.</a></div></section>
     </main>
-    <footer><a href="#home" className="wordmark">tarot milky tea</a><div><a href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Medium <Arrow/></a><a href="https://threads.net/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Threads <Arrow/></a><a href="mailto:tarotmilkytea@gmail.com">Email <Arrow/></a></div><p>© {new Date().getFullYear()} Tarot Milky Tea by Charlotte</p><small>Readings are for entertainment and spiritual guidance. Not a substitute for professional advice.</small></footer>
+    <footer><a href="#home" className="wordmark">tarot milky tea</a><div><a href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Medium <Arrow/></a><a href="https://threads.net/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Threads <Arrow/></a><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">Instagram <Arrow/></a><a href="mailto:tarotmilkytea@gmail.com">Email <Arrow/></a></div><p>© {new Date().getFullYear()} Tarot Milky Tea by Charlotte</p><small>Readings are for entertainment and spiritual guidance. Not a substitute for professional advice.</small></footer>
   </div>;
 }
