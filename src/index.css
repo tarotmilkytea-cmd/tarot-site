@@ -278,3 +278,114 @@ footer>div a{font-size:12px}
 .product-card{transition:box-shadow .2s var(--ease)}
 .product-card:hover{transform:none;box-shadow:0 8px 20px #415e700d}
 .button:hover span,.text-link:hover span,.reading-link:hover span{transform:none}
+
+.journals-section {
+  background: #f9f4f0;
+  scroll-margin-top: 6rem;
+}
+
+.journals-section h2 {
+  margin: 0 0 2rem;
+  text-align: center;
+}
+
+.journals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.journal-card {
+  display: grid;
+  grid-template-columns: minmax(7rem, 34%) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  padding: clamp(1rem, 2vw, 1.6rem);
+  border: 1px solid #dbe3ef;
+  border-radius: 20px;
+  background: #f3f7fb;
+}
+
+.journal-card:nth-child(2) {
+  background: #f4eff7;
+  border-color: #e4ddea;
+}
+
+.journal-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 4px 8px 18px #2d2d4925;
+}
+
+.journal-card h3 {
+  margin: 0 0 .45rem;
+  font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+  line-height: 1.12;
+}
+
+.journal-format {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.journal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
+
+.journal-card .button {
+  min-height: 44px;
+  padding: .65rem .95rem;
+  text-align: center;
+}
+
+.journal-card .button:disabled {
+  background: #e9e5ed;
+  color: #585264;
+  box-shadow: none;
+  cursor: default;
+  transform: none;
+}
+
+@media (max-width: 1020px) {
+  .journals-grid { grid-template-columns: 1fr; max-width: 680px; }
+}
+
+@media (max-width: 460px) {
+  .journal-card { grid-template-columns: 1fr; }
+  .journal-card img { width: min(100%, 12rem); }
+}
+
+.journal-card h3 + p + p { margin-bottom: .85rem; }
+
+@media (min-width: 761px) {
+  .main-nav { gap: clamp(9px, 1.45vw, 23px); }
+  .main-nav a { white-space: nowrap; }
+}
+
+@media (min-width: 761px) and (max-width: 920px) {
+  .menu-button {
+    display: block;
+    background: transparent;
+    padding: 12px 8px;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    inset: 100% 0 auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0 1.4rem;
+    padding: .65rem 1rem;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .main-nav.is-open { display: flex; }
+}
