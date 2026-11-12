@@ -367,3 +367,25 @@ footer>div a{font-size:12px}
   .main-nav { gap: clamp(9px, 1.45vw, 23px); }
   .main-nav a { white-space: nowrap; }
 }
+
+@media (min-width: 761px) and (max-width: 920px) {
+  .menu-button {
+    display: block;
+    background: transparent;
+    padding: 12px 8px;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    inset: 100% 0 auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0 1.4rem;
+    padding: .65rem 1rem;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .main-nav.is-open { display: flex; }
+}
