@@ -389,3 +389,10 @@ footer>div a{font-size:12px}
 
   .main-nav.is-open { display: flex; }
 }
+
+/* Between readings: readable copy and separate store choices. */
+.restree-copy>p:not(.eyebrow):not(.restree-app-name):not(.restree-availability):not(.restree-pricing){font-size:16px;line-height:1.8}
+.restree-copy .eyebrow,.restree-pricing{font-size:14px}
+.restree-store-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.restree-store-buttons .button{font-size:18px;margin-top:14px;gap:0}
+.restree-feature + .booking-section{margin-top:70px}

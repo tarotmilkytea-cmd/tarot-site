@@ -155,6 +155,9 @@ export default function TarotMilkyTeaShop() {
         <button className="view-all" aria-pressed={audience === "all" && activeConcern === "all"} aria-controls="reading-results" onClick={() => chooseAudience("all")}>Explore all {allProducts.length} readings <span aria-hidden="true">{audience === "all" && activeConcern === "all" ? "✓" : "↓"}</span></button>
         {audience === 'returning' && <div className="followup-guidance"><div><h3>A small follow-up?</h3><p>If you want to clarify your previous reading, follow-up questions are $11 each. A new reading is there when your question or situation has changed.</p></div><a href="mailto:tarotmilkytea@gmail.com" className="text-link">Email Charlotte <Arrow/></a></div>}
         <p className="delivery-note">All prices in USD. Delivery windows begin after confirmed payment. Your reading arrives by email.</p>
+
+      </section>
+
         <aside className="restree-feature" id="restree" aria-labelledby="restree-heading">
           <div className="restree-collage">
             <p className="restree-small-note" aria-hidden="true">little moments,<br/><em>worth keeping.</em><span>♡</span></p>
@@ -163,9 +166,14 @@ export default function TarotMilkyTeaShop() {
             <p className="restree-blue-note" aria-hidden="true">your story<br/>belongs<br/><em>somewhere.</em><span>♡</span></p>
             <span className="restree-keepsake" aria-hidden="true">a letter, just for you</span>
           </div>
-          <div className="restree-letter-wrap"><div className="restree-copy"><p className="eyebrow">From the creator of Tarot Milky Tea</p><p className="restree-app-name">ReStree <span>The journal that writes back</span></p><h3 id="restree-heading">You write your day.<br/><em>Stree writes back.</em></h3><p>A small place for your everyday thoughts. Stree remembers your story and replies with a warm, personal letter.</p><p>Our “Re” comes from “Reply.” One journal entry, one thoughtful reply, a little more understanding.</p><a className="button" href="https://restree-website.vercel.app/?utm_source=tarotmilkytea&utm_medium=referral&utm_campaign=product_catalog" target="_blank" rel="noopener noreferrer">Meet Stree in ReStree <Arrow/></a><p className="restree-pricing"><strong>7-day free trial</strong> · $12.99</p><p className="restree-availability">Available on Android · iPhone waitlist on the ReStree website</p></div></div>
+          <div className="restree-letter-wrap"><div className="restree-copy"><p className="eyebrow">Between readings</p><p className="restree-app-name">ReStree <span>The journal that writes back</span></p><h3 id="restree-heading">Charlotte reads your big questions.<br/><em>Stree listens every day.</em></h3><p>ReStree is a small journal that writes you back. Write a few lines about your day. Stree, my companion from the stars, replies with a warm letter that remembers your story and reads it through your birth chart.</p><p className="restree-pricing"><strong>First 7 days free · No card needed</strong></p><div className="restree-store-buttons"><a className="button" href="https://apps.apple.com/us/app/id6804592170?utm_source=tarotmilkytea&amp;utm_medium=site&amp;utm_campaign=crosspromo" target="_blank" rel="noopener noreferrer">App Store</a><a className="button" href="https://play.google.com/store/apps/details?id=com.restree.app&amp;referrer=utm_source%3Dtarotmilkytea%26utm_medium%3Dsite%26utm_campaign%3Dcrosspromo" target="_blank" rel="noopener noreferrer">Google Play</a></div><p><a className="text-link" href="https://getrestree.com/?utm_source=tarotmilkytea&amp;utm_medium=site&amp;utm_campaign=crosspromo" target="_blank" rel="noopener noreferrer">Meet Stree in ReStree</a></p></div></div>
           <span className="restree-pearl pearl-one" aria-hidden="true"/><span className="restree-pearl pearl-two" aria-hidden="true"/><span className="restree-pearl pearl-three" aria-hidden="true"/>
         </aside>
+
+      <section className="booking-section section-pad" id="how-it-works" data-reveal>
+        <p className="eyebrow">03 — From your question to your inbox</p><h2>Simple, personal,<br/><em>at your pace.</em></h2>
+        <div className="booking-steps"><div><span>01</span><h3>Choose your reading</h3><p>Find the reading that feels right and send your request through the Google Form.</p></div><div><span>02</span><h3>A note from Charlotte</h3><p>I’ll email your PayPal link and the personal questions or birth details needed for your reading.</p></div><div><span>03</span><h3>A little clarity, delivered</h3><p>After payment is confirmed, I prepare your reading and send it to your inbox within its listed delivery window.</p></div></div>
+        <BookingLink className="button">Send a reading request <Arrow/></BookingLink><p className="small-note">No payment is taken in the booking form.</p>
       </section>
 
       {showAdult && <section id="after-dark-readings" className="after-dark-section section-pad" aria-labelledby="after-dark-title">
@@ -174,11 +182,7 @@ export default function TarotMilkyTeaShop() {
         <div className="adult-notes"><p>For adults 18+ only, including anyone discussed. Symbolic readings cannot verify another person’s private thoughts, sexual preferences, consent or future actions.</p><p>Charlotte follows up by email with your PayPal link, age confirmation and personal questions. Cosmic Chemistry also uses your birth date, time (or “unknown”) and place. Partner details are optional and should only be shared with permission.</p></div>
       </section>}
 
-      <section className="booking-section section-pad" id="how-it-works" data-reveal>
-        <p className="eyebrow">03 — From your question to your inbox</p><h2>Simple, personal,<br/><em>at your pace.</em></h2>
-        <div className="booking-steps"><div><span>01</span><h3>Choose your reading</h3><p>Find the reading that feels right and send your request through the Google Form.</p></div><div><span>02</span><h3>A note from Charlotte</h3><p>I’ll email your PayPal link and the personal questions or birth details needed for your reading.</p></div><div><span>03</span><h3>A little clarity, delivered</h3><p>After payment is confirmed, I prepare your reading and send it to your inbox within its listed delivery window.</p></div></div>
-        <BookingLink className="button">Send a reading request <Arrow/></BookingLink><p className="small-note">No payment is taken in the booking form.</p>
-      </section>
+
 
       <section className="testimonials-section section-pad" aria-labelledby="testimonials-title" data-reveal><p className="eyebrow">Words from the other side of the table</p><h2 id="testimonials-title">A little more <em>clarity.</em></h2><div className="testimonials-grid">{testimonials.map(t => <figure key={t.name}><span className="quote-mark" aria-hidden="true">“</span><blockquote>{t.text}</blockquote><figcaption>{t.name}<span>{t.type}</span></figcaption></figure>)}</div></section>
 
@@ -191,6 +195,6 @@ export default function TarotMilkyTeaShop() {
 
       <section className="closing section-pad" data-reveal><Ribbon/><p className="eyebrow">There’s a seat for you here</p><h2>Let’s begin<br/><em>with your story.</em></h2><BookingLink className="button">Book your reading <Arrow/></BookingLink><div className="closing-paths"><a href="#readings" onClick={() => chooseAudience('first')}>New here? Find your first reading.</a><a href="#returning" onClick={() => chooseAudience('returning')}>Returning? Find your next chapter.</a></div></section>
     </main>
-    <footer><a href="#home" className="wordmark">tarot milky tea</a><div><a href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Medium <Arrow/></a><a href="https://threads.net/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Threads <Arrow/></a><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">Instagram <Arrow/></a><a href="mailto:tarotmilkytea@gmail.com">Email <Arrow/></a></div><p>© {new Date().getFullYear()} Tarot Milky Tea by Charlotte</p><small>Readings are for entertainment and spiritual guidance. Not a substitute for professional advice.</small></footer>
+    <footer><a href="#home" className="wordmark">tarot milky tea</a><div><a href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Medium <Arrow/></a><a href="https://threads.net/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Threads <Arrow/></a><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">Instagram <Arrow/></a><a href="https://getrestree.com/?utm_source=tarotmilkytea&amp;utm_medium=site&amp;utm_campaign=crosspromo" target="_blank" rel="noopener noreferrer">ReStree</a><a href="mailto:tarotmilkytea@gmail.com">Email <Arrow/></a></div><p>© {new Date().getFullYear()} Tarot Milky Tea by Charlotte</p><small>Readings are for entertainment and spiritual guidance. Not a substitute for professional advice.</small></footer>
   </div>;
 }
