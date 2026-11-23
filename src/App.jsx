@@ -176,6 +176,8 @@ export default function TarotMilkyTeaShop() {
         <BookingLink className="button">Send a reading request <Arrow/></BookingLink><p className="small-note">No payment is taken in the booking form.</p>
       </section>
 
+      <JournalsSection />
+
       {showAdult && <section id="after-dark-readings" className="after-dark-section section-pad" aria-labelledby="after-dark-title">
         <div className="after-dark-intro" data-reveal><div className="after-dark-photo"><img src="/images/after-dark.webp" width="1122" height="1402" loading="lazy" alt="Blue roses, candlelight, milk tea and a fan of tarot cards."/><span>The quieter questions</span></div><div className="after-dark-copy"><p className="eyebrow">The After Dark collection · 18+</p><h2 id="after-dark-title">A softer space<br/>for <em>desire.</em></h2><p>For the chemistry you feel, the attachment you’re untangling, and the intimacy you hope for.</p><p>Two private Symbolon readings to explore your questions with curiosity and care.</p><a className="text-link" href="#after-dark-options">Find your After Dark reading <span aria-hidden="true">↓</span></a></div></div>
         <div className="product-grid adult-grid" id="after-dark-options">{allProducts.filter(p => p.adult).map(p => <ProductCard key={p.id} product={p}/>)}</div>
@@ -189,7 +191,7 @@ export default function TarotMilkyTeaShop() {
       <section className="about-section section-pad" id="about" data-reveal><div className="about-card" aria-hidden="true"><Ribbon/><Symbol/><span>The reader</span><em>Charlotte</em><div className="about-card-lines">The stars · the cards<br/>your story</div></div><div className="about-copy"><p className="eyebrow">04 — Your reader, Charlotte</p><h2>A real person.<br/><em>Room for your story.</em></h2><p>I help people at life’s crossroads through astrology, tarot and Symbolon — bringing a little perspective to the questions that stay with you.</p><p>I personally pull your cards, explore your birth chart with professional software, and write your reading around your story. A thoughtful exchange, from one person to another.</p><a className="text-link" href="https://medium.com/@tarotmilkytea" target="_blank" rel="noopener noreferrer">Read my stories on Medium <Arrow/></a></div></section>
 
 
-      <JournalsSection />
+
 
       <section className="faq-section section-pad" id="faq"><div><p className="eyebrow">Before you settle in</p><h2>A few things<br/><em>you might wonder.</em></h2><p>Something else on your mind?<br/><a href="mailto:tarotmilkytea@gmail.com">Email Charlotte <Arrow/></a></p></div><div className="faq-list">{faqs.map(([q,a]) => <details key={q}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
 
